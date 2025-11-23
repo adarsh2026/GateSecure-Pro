@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GateSecure Pro – QR Visitor & Gate Pass System</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- QR Scanner Library (Guard Panel) -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(circle at top, #1d4ed8 0, #020617 45%, #000 100%);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #e5e7eb;
+        }
+
+        .pointer { cursor: pointer; }
+        .d-none { display: none !important; }
+
+        /* ===================== LANDING PAGE ===================== */
+        .landing-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .landing-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 16px 16px 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .landing-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 0 10px;
+        }
+
+        .landing-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: radial-gradient(circle at 10% 0, #22c55e, #2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f9fafb;
+            font-size: 1.2rem;
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(15,23,42,0.7);
+        }
+
+        .logo-text-main {
+            font-weight: 800;
+            font-size: 1.22rem;
+            letter-spacing: -0.03em;
+        }
+
+        .logo-text-pro {
+            color: #22c55e;
+        }
+
+        .logo-text-sub {
+            font-size: 0.72rem;
+            color: #9ca3af;
+        }
+
+        /* Header right - role dropdown */
+        .header-login-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .header-login-btn {
+            border-radius: 999px;
+            padding: 6px 17px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15,23,42,0.8);
+            color: #e5e7eb;
+            border: 1px solid rgba(148,163,184,0.4);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-login-btn span.icon {
+            font-size: 1.1rem;
+        }
+
+        .header-login-btn:hover {
+            border-color: #22c55e;
+            box-shadow: 0 0 20px rgba(34,197,94,0.25);
+        }
+
+        .role-menu {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: #020617;
+            border-radius: 16px;
+            box-shadow: 0 18px 60px rgba(15,23,42,0.9);
+            padding: 6px 0;
+            min-width: 230px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(4px);
+            transition: all .18s ease;
+            z-index: 40;
+            border: 1px solid rgba(148,163,184,0.3);
+        }
+
+        .header-login-wrapper:hover .role-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .role-menu-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #9ca3af;
+            padding: 4px 13px 2px;
+        }
+
+        .role-menu button {
+            width: 100%;
+            padding: 9px 14px;
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #e5e7eb;
+        }
+
+        .role-menu button span.role-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .role-menu button small {
+            font-size: 0.7rem;
+            color: #9ca3af;
+        }
+
+        .role-menu button:hover {
+            background: rgba(15,23,42,0.85);
+        }
+
+        /* Hero section */
+        .landing-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        .landing-card {
+            width: 100%;
+            background: radial-gradient(circle at top left, rgba(37,99,235,0.25), rgba(15,23,42,0.98));
+            border-radius: 26px;
+            padding: 28px 32px 26px;
+            box-shadow: 0 26px 80px rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.25);
+            display: grid;
+            grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.4fr);
+            gap: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background:
+                radial-gradient(circle at 10% 0, rgba(56,189,248,0.25), transparent 65%),
+                radial-gradient(circle at 90% 0, rgba(34,197,94,0.18), transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(37,99,235,0.18), transparent 65%);
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .landing-left {
+            position: relative;
+            z-index: 1;
+        }
+
+        .landing-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 11px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.75);
+            font-size: 0.76rem;
+            color: #e5e7eb;
+            margin-bottom: 8px;
+            border: 1px solid rgba(148,163,184,0.4);
+        }
+
+        .landing-badge span.dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #22c55e;
+        }
+
+        .landing-title {
+            font-size: 2.15rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .landing-title span.highlight {
+            background: linear-gradient(90deg, #22c55e, #38bdf8, #6366f1);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .landing-sub {
+            font-size: 0.96rem;
+            color: #e5e7eb;
+            margin-top: 10px;
+            max-width: 30rem;
+        }
+
+        .landing-points {
+            margin-top: 12px;
+            padding-left: 1.1rem;
+        }
+
+        .landing-points li {
+            font-size: 0.86rem;
+            margin-bottom: 4px;
+            color: #cbd5f5;
+        }
+
+        .tag-row {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-pill {
+            font-size: 0.75rem;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.8);
+            padding: 3px 10px;
+            border: 1px solid rgba(148,163,184,0.35);
+            color: #e5e7eb;
+        }
+
+        .landing-meta {
+            margin-top: 12px;
+            font-size: 0.78rem;
+            color: #9ca3af;
+        }
+
+        .landing-cta-note {
+            margin-top: 6px;
+            font-size: 0.78rem;
+            color: #cbd5f5;
+        }
+
+        /* Guest Gate Pass lookup card */
+        .visitor-pass-card {
+            margin-top: 14px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.45);
+            max-width: 420px;
+            font-size: 0.82rem;
+        }
+
+        .visitor-pass-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .visitor-pass-desc {
+            font-size: 0.78rem;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        .visitor-pass-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .visitor-pass-input {
+            flex: 1;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.6);
+            background: rgba(15,23,42,0.9);
+            color: #e5e7eb;
+            font-size: 0.8rem;
+            padding: 6px 10px;
+        }
+
+        .visitor-pass-input::placeholder {
+            color: #6b7280;
+        }
+
+        .visitor-pass-input:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 1px rgba(56,189,248,0.5);
+        }
+
+        .visitor-pass-btn {
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(90deg, #2563eb, #22c55e);
+            color: #f9fafb;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .visitor-pass-btn:hover {
+            opacity: 0.95;
+        }
+
+        .vp-result {
+            margin-top: 8px;
+        }
+
+        .vp-result-card {
+            margin-top: 6px;
+            border-radius: 14px;
+            padding: 10px 10px;
+            background: radial-gradient(circle at top left, #020617, #020617 60%, #020617 100%);
+            border: 1px solid rgba(148,163,184,0.5);
+            font-size: 0.8rem;
+        }
+
+        .vp-qr-box {
+            border-radius: 12px;
+            border: 2px solid #1d4ed8;
+            padding: 8px;
+            background: #020617;
+            width: 140px;
+            height: 140px;
+        }
+
+        .vp-qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Self registration card */
+        .visitor-self-field {
+            margin-top: 6px;
+        }
+
+        .visitor-self-field input {
+            width: 100%;
+        }
+
+        /* Right side: Gate monitor visual */
+        .landing-right {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-monitor {
+            border-radius: 22px;
+            padding: 16px 16px 14px;
+            background: linear-gradient(135deg, rgba(15,23,42,0.95), #020617);
+            border: 1px solid rgba(148,163,184,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-monitor-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .hero-monitor-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .hero-chip {
+            font-size: 0.7rem;
+            padding: 3px 7px;
+            border-radius: 999px;
+            background: rgba(34,197,94,0.12);
+            color: #bbf7d0;
+            border: 1px solid rgba(34,197,94,0.4);
+        }
+
+        .hero-mini-stats {
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+
+        .hero-mini-stats div strong {
+            font-size: 1.2rem;
+            display: block;
+        }
+
+        .hero-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148,163,184,0.7), transparent);
+            margin: 10px 0 7px;
+        }
+
+        .hero-rows {
+            font-size: 0.78rem;
+        }
+
+        .hero-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+        }
+
+        .hero-row + .hero-row {
+            border-top: 1px dashed rgba(55,65,81,0.7);
+        }
+
+        .hero-tag-inline {
+            font-size: 0.72rem;
+            padding: 2px 6px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(56,189,248,0.45), transparent);
+            border-radius: 999px;
+            top: -40px;
+            right: -40px;
+            opacity: 0.7;
+        }
+
+        .hero-bottom-strip {
+            margin-top: 9px;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9ca3af;
+        }
+
+        .hero-bottom-strip span.accent {
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        @media (max-width: 900px) {
+            .landing-card {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing-card {
+                padding: 22px 18px;
+            }
+        }
+
+        /* ===================== LOGIN POPUP ===================== */
+        .login-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+
+        .login-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(15,23,42,0.8);
+            backdrop-filter: blur(8px);
+        }
+
+        .login-card {
+            position: relative;
+            width: 370px;
+            border-radius: 20px;
+            background: #020617;
+            box-shadow: 0 24px 80px rgba(15,23,42,0.9);
+            z-index: 51;
+            overflow: hidden;
+            border: 1px solid rgba(148,163,184,0.45);
+        }
+
+        .login-top-strip {
+            height: 4px;
+            background: linear-gradient(90deg, #22c55e, #38bdf8, #6366f1);
+        }
+
+        .login-inner {
+            padding: 18px 20px;
+        }
+
+        .login-role-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 999px;
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            background: rgba(15,23,42,0.9);
+            color: #c4ddff;
+            border: 1px solid rgba(148,163,184,0.7);
+            margin-bottom: 6px;
+        }
+
+        .login-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #f9fafb;
+        }
+
+        .login-sub {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .login-close {
+            position: absolute;
+            top: 9px;
+            right: 11px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #9ca3af;
+        }
+
+        .login-close:hover {
+            color: #e5e7eb;
+        }
+
+        .form-label-sm {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #e5e7eb;
+        }
+
+        /* ===================== APP LAYOUT (AFTER LOGIN) ===================== */
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+            background: #f3f4f6;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 230px;
+            background: #0b1120;
+            color: #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #111827;
+        }
+
+        .sidebar-header {
+            padding: 18px 20px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-bottom: 1px solid #111827;
+        }
+
+        .sidebar-header span {
+            color: #22c55e;
+        }
+
+        .sidebar-menu {
+            padding: 10px 0;
+            flex: 1;
+        }
+
+        .sidebar-link {
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background .15s ease, color .15s ease, padding-left .15s ease;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: #111827;
+            color: #f9fafb;
+            padding-left: 22px;
+        }
+
+        .sidebar-footer {
+            padding: 10px 18px;
+            font-size: 0.8rem;
+            border-top: 1px solid #111827;
+            color: #9ca3af;
+        }
+
+        /* MAIN */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .topbar {
+            background: #ffffff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .topbar-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #111827;
+        }
+
+        .topbar-sub {
+            font-size: 0.82rem;
+            color: #6b7280;
+        }
+
+        .content {
+            padding: 20px 24px 24px;
+            background: #f3f4f6;
+        }
+
+        /* STAT CARDS */
+        .stat-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 14px 16px;
+            box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 3px solid rgba(37,99,235,0.75);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #111827;
+        }
+
+        .stat-pill {
+            font-size: 0.72rem;
+            background: #f9fafb !important;
+            color: #6b7280 !important;
+            border-radius: 999px;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 16px 16px 14px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #111827;
+        }
+
+        .section-sub {
+            font-size: 0.78rem;
+            color: #6b7280;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            background: #2563eb;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+        .btn-outline-secondary {
+            border-color: #d1d5db;
+            color: #111827;
+            font-weight: 500;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        /* TABLES */
+        .table {
+            color: #111827;
+        }
+
+        .table thead.table-light {
+            background: #f9fafb !important;
+            color: #111827 !important;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table tbody tr {
+            background: #ffffff;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .table tbody tr:hover {
+            background: #eef2ff;
+        }
+
+        /* INPUTS / SELECT */
+        .search-input,
+        #filterStatus,
+        .form-control {
+            background: #ffffff !important;
+            border: 1px solid #d1d5db !important;
+            color: #111827 !important;
+            font-size: 0.85rem;
+        }
+
+        .search-input::placeholder,
+        .form-control::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-input:focus,
+        #filterStatus:focus,
+        .form-control:focus {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 1px rgba(37,99,235,0.35) !important;
+        }
+
+        /* STATUS BADGES */
+        .status-in {
+            background: #dcfce7 !important;
+            color: #15803d !important;
+        }
+
+        .status-out {
+            background: #fee2e2 !important;
+            color: #b91c1c !important;
+        }
+
+        .status-expected {
+            background: #dbeafe !important;
+            color: #1d4ed8 !important;
+        }
+
+        .pill-badge {
+            border-radius: 999px;
+            padding: 3px 10px;
+            font-size: 0.75rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .layout {
+                flex-direction: column;
+            }
+        }
+
+        /* QR reader box */
+        #qrReader {
+            border-radius: 10px;
+            overflow: hidden;
+            background: #0f172a;
+            border: 1px solid #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= LANDING SCREEN ================= -->
+<div id="landingScreen" class="landing-wrapper">
+    <div class="landing-shell">
+        <header class="landing-header">
+            <div class="landing-logo">
+                <div class="logo-icon">G</div>
+                <div>
+                    <div class="logo-text-main">
+                        GateSecure <span class="logo-text-pro">Pro</span>
+                    </div>
+                    <div class="logo-text-sub">QR-Based Visitor & Gate Pass Management</div>
+                </div>
+            </div>
+
+            <div class="header-login-wrapper">
+                <button class="header-login-btn">
+                    <span class="icon">🛂</span>
+                    <span>Login</span>
+                    <span style="font-size:0.7rem;">▼</span>
+                </button>
+                <div class="role-menu">
+                    <div class="role-menu-title">Sign in as</div>
+                    <button type="button" class="role-option" data-role="admin">
+                        <span class="role-label">
+                            <span>🧩 Admin</span>
+                        </span>
+                        <small>Full control & reports</small>
+                    </button>
+                    <button type="button" class="role-option" data-role="reception">
+                        <span class="role-label">
+                            <span>📝 Reception</span>
+                        </span>
+                        <small>Register visitors & assign gate-pass</small>
+                    </button>
+                    <button type="button" class="role-option" data-role="guard">
+                        <span class="role-label">
+                            <span>🚧 Security Guard</span>
+                        </span>
+                        <small>Check-in / Check-out at gate</small>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            <div class="landing-card">
+                <div class="landing-left">
+                    <div class="landing-badge">
+                        <span class="dot"></span>
+                        <span>Live security dashboard</span>
+                        <span style="font-size:0.75rem; color:#9ca3af;">QR gate-pass · Role-based control</span>
+                    </div>
+                    <h1 class="landing-title">
+                        Smart, secure<br>
+                        <span class="highlight">QR-based entry</span> for your gate.
+                    </h1>
+                    <p class="landing-sub">
+                        GateSecure Pro ek role-based visitor management system hai jisme
+                        <b>Admin</b>, <b>Reception</b> aur <b>Security Guard</b> ke liye
+                        alag-alag panels hain. Har visitor ko unique gate-pass ID + QR milta hai,
+                        jisse entry/exit track karna super easy ho jata hai.
+                    </p>
+
+                    <ul class="landing-points">
+                        <li>✅ Reception: One-click visitor registration + instant QR gate-pass</li>
+                        <li>✅ Guard: QR/pass ID se automatic check-in / check-out toggle</li>
+                        <li>✅ Admin: Total visitors, live inside count, daily stats & full history</li>
+                    </ul>
+
+                    <div class="tag-row">
+                        <span class="tag-pill">Python (Flask)</span>
+                        <span class="tag-pill">HTML5</span>
+                        <span class="tag-pill">CSS3</span>
+                        <span class="tag-pill">Bootstrap 5</span>
+                        <span class="tag-pill">REST APIs</span>
+                        <span class="tag-pill">QR Code Integration</span>
+                    </div>
+
+                    <p class="landing-meta">
+                        Perfect project to highlight in resume/interview:
+                        security, real-time systems, REST APIs, QR automation & role-based UI.
+                    </p>
+                    <p class="landing-cta-note">
+                        🔐 Upar top-right pe cursor le jao → role select karo → login karke
+                        <b>GateSecure Pro dashboard</b> dekh sakte ho.
+                    </p>
+
+                    <!-- Guest Gate Pass lookup (Visitor Check – as it is) -->
+                    <div class="visitor-pass-card">
+                        <div class="visitor-pass-title">Already have a Gate Pass ID?</div>
+                        <div class="visitor-pass-desc">
+                            Apna Gate Pass ID daalo, QR aur basic details dekho, aur guard ko ye screen dikhao.
+                        </div>
+                        <div class="visitor-pass-row">
+                            <input id="visitorPassInput"
+                                   class="visitor-pass-input"
+                                   placeholder="e.g. GATE-2025-0003">
+                            <button class="visitor-pass-btn" type="button" onclick="fetchVisitorPass()">
+                                View Pass
+                            </button>
+                        </div>
+                        <div id="visitorPassResult" class="vp-result"></div>
+                    </div>
+
+                    <!-- NEW: Self registration – Get Gate Pass ID from landing itself -->
+                    <div class="visitor-pass-card">
+                        <div class="visitor-pass-title">Don’t have a Gate Pass ID?</div>
+                        <div class="visitor-pass-desc">
+                            Yaha se aap khud details fill karke <b>Gate Pass ID + QR</b> le sakte ho.
+                            Ye record reception/admin/guard panel me bhi automatically chala jayega.
+                        </div>
+
+                        <form id="selfRegisterForm" onsubmit="selfRegisterVisitor(event)">
+                            <div class="visitor-self-field">
+                                <input id="selfName" class="visitor-pass-input" placeholder="Visitor Name *">
+                            </div>
+                            <div class="visitor-self-field">
+                                <input id="selfPhone" class="visitor-pass-input" placeholder="Phone *">
+                            </div>
+                            <div class="visitor-self-field">
+                                <input id="selfToMeet" class="visitor-pass-input" placeholder="Whom to Meet * (Person name)">
+                            </div>
+                            <div class="visitor-self-field">
+                                <input id="selfDept" class="visitor-pass-input" placeholder="Department (optional)">
+                            </div>
+                            <div class="visitor-self-field">
+                                <input id="selfPurpose" class="visitor-pass-input" placeholder="Purpose (optional)">
+                            </div>
+                            <div class="visitor-self-field">
+                                <input id="selfVehicle" class="visitor-pass-input" placeholder="Vehicle No. (optional)">
+                            </div>
+
+                            <button class="visitor-pass-btn w-100 mt-2" type="submit">
+                                Get New Gate Pass ID
+                            </button>
+                        </form>
+
+                        <div id="selfRegisterResult" class="vp-result"></div>
+                    </div>
+                </div>
+
+                <div class="landing-right">
+                    <div class="hero-monitor">
+                        <div class="hero-glow"></div>
+                        <div class="hero-monitor-top">
+                            <div>
+                                <div style="font-size:0.75rem; color:#9ca3af;">Gate Monitor · Live</div>
+                                <div class="hero-monitor-title">Campus Main Gate – GateSecure Pro</div>
+                            </div>
+                            <span class="hero-chip">QR Gate-Pass Active</span>
+                        </div>
+
+                        <div class="hero-mini-stats">
+                            <div>
+                                <span style="color:#9ca3af;">Inside Now</span>
+                                <strong>18</strong>
+                            </div>
+                            <div>
+                                <span style="color:#9ca3af;">Today’s Visitors</span>
+                                <strong>72</strong>
+                            </div>
+                            <div>
+                                <span style="color:#9ca3af;">Avg Stay</span>
+                                <strong>19 min</strong>
+                            </div>
+                        </div>
+
+                        <div class="hero-divider"></div>
+
+                        <div class="hero-rows">
+                            <div class="hero-row">
+                                <span>Gate Pass #GATE-2025-0072</span>
+                                <span class="hero-tag-inline">Inside · QR Verified</span>
+                            </div>
+                            <div class="hero-row">
+                                <span>Reception → New visitor registered</span>
+                                <span style="color:#a5b4fc;">QR generated</span>
+                            </div>
+                            <div class="hero-row">
+                                <span>Guard → QR scan at entry</span>
+                                <span style="color:#6ee7b7;">Check-in logged</span>
+                            </div>
+                            <div class="hero-row">
+                                <span>Admin → Dashboard updated</span>
+                                <span style="color:#fbbf24;">Live analytics</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-bottom-strip">
+                            <span>Role-based control: <span class="accent">Admin · Reception · Guard</span></span>
+                            <span style="font-size:0.7rem;">Powered by Flask + QR Code</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- ================= LOGIN POPUP ================= -->
+<div id="loginOverlay" class="login-overlay d-none">
+    <div class="login-backdrop"></div>
+    <div class="login-card">
+        <div class="login-top-strip"></div>
+        <div class="login-close" id="loginClose">&times;</div>
+        <div class="login-inner">
+            <div class="login-role-chip">
+                <span>🔐 Logging in as</span>
+                <span id="loginRoleLabel">User</span>
+            </div>
+            <div class="login-title mb-1">Welcome to GateSecure Pro</div>
+            <div class="login-sub mb-2">Enter your user ID & password to open your panel.</div>
+
+            <form id="loginForm">
+                <div class="mb-2">
+                    <label class="form-label-sm">User ID</label>
+                    <input type="text" id="loginId" class="form-control form-control-sm" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label-sm">Password</label>
+                    <input type="password" id="loginPassword" class="form-control form-control-sm" required>
+                </div>
+                <button class="btn btn-primary w-100 mt-2" type="submit">
+                    Login
+                </button>
+                <div class="mt-3 text-muted" style="font-size:0.75rem;">
+                    Demo IDs:
+                    <ul class="mb-0">
+                        <li>Admin → <b>admin1 / admin123</b></li>
+                        <li>Reception → <b>reception1 / recept123</b></li>
+                        <li>Guard → <b>guard1 / guard123</b></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ================= APP SCREEN (AFTER LOGIN) ================= -->
+<div id="appScreen" class="d-none">
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                GateSecure<span> Pro</span>
+            </div>
+            <div class="sidebar-menu">
+                <a class="sidebar-link active"
+                   data-target="tab-dashboard"
+                   data-roles="admin,reception,guard">
+                    📊 Dashboard
+                </a>
+                <a class="sidebar-link"
+                   data-target="tab-reception"
+                   data-roles="admin,reception">
+                    📝 Reception (New Visitor)
+                </a>
+                <a class="sidebar-link"
+                   data-target="tab-guard"
+                   data-roles="admin,guard">
+                    🚧 Security Guard
+                </a>
+                <a class="sidebar-link"
+                   data-target="tab-visitors"
+                   data-roles="admin,reception">
+                    📋 All Visitors
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                GateSecure Pro<br>
+                <span class="text-success">●</span> Flask · QR · Role-Based
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main">
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <div>
+                    <div class="topbar-title">GateSecure Pro Dashboard</div>
+                    <div class="topbar-sub">Monitor visitors, QR gate-passes, and live security flow.</div>
+                </div>
+                <div class="d-flex flex-column align-items-end">
+                    <div id="topUserInfo" class="small text-muted mb-1"></div>
+                    <div class="d-flex gap-2">
+                        <div class="badge bg-light text-muted">
+                            Date: <span id="todayDate"></span>
+                        </div>
+                        <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content">
+                <!-- TOP STATS -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Visitors</div>
+                            <div id="statTotal" class="stat-value">0</div>
+                            <span class="badge bg-light text-muted stat-pill">All-time</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card">
+                            <div class="stat-label">Inside Now</div>
+                            <div id="statInside" class="stat-value">0</div>
+                            <span class="badge bg-light text-muted stat-pill">Currently inside</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card">
+                            <div class="stat-label">Expected</div>
+                            <div id="statExpected" class="stat-value">0</div>
+                            <span class="badge bg-light text-muted stat-pill">Registered, not in</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-card">
+                            <div class="stat-label">Today Visitors</div>
+                            <div id="statToday" class="stat-value">0</div>
+                            <span class="badge bg-light text-muted stat-pill">Created today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD TAB -->
+                <div id="tab-dashboard" class="tab-pane-custom" data-roles="admin,reception,guard">
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <div class="section-card">
+                                <div class="section-header mb-2">
+                                    <div>
+                                        <div class="section-title">Visitors Inside</div>
+                                        <div class="section-sub">Currently inside the premises.</div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('in')">
+                                        Refresh
+                                    </button>
+                                </div>
+                                <div class="table-responsive" style="max-height:320px; overflow:auto;">
+                                    <table class="table table-sm table-bordered align-middle">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Pass ID</th>
+                                            <th>Name</th>
+                                            <th>To Meet</th>
+                                            <th>Dept</th>
+                                            <th>In Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="insideTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="section-card">
+                                <div class="section-header mb-2">
+                                    <div>
+                                        <div class="section-title">Today’s Visitors</div>
+                                        <div class="section-sub">All visitors created today.</div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('today')">
+                                        Refresh
+                                    </button>
+                                </div>
+                                <div class="table-responsive" style="max-height:320px; overflow:auto;">
+                                    <table class="table table-sm table-bordered align-middle">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Pass ID</th>
+                                            <th>Name</th>
+                                            <th>Status</th>
+                                            <th>Created</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="todayTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECEPTION TAB -->
+                <div id="tab-reception" class="tab-pane-custom d-none" data-roles="admin,reception">
+                    <div class="row g-3">
+                        <div class="col-lg-5">
+                            <div class="section-card">
+                                <div class="section-header mb-2">
+                                    <div class="section-title">New Visitor Registration (Reception)</div>
+                                </div>
+                                <form id="visitorForm">
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Visitor Name</label>
+                                        <input type="text" id="vName" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Phone</label>
+                                        <input type="text" id="vPhone" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Whom to Meet</label>
+                                        <input type="text" id="vToMeet" class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Department</label>
+                                        <input type="text" id="vDept" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Purpose</label>
+                                        <input type="text" id="vPurpose" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Vehicle No.</label>
+                                        <input type="text" id="vVehicle" class="form-control form-control-sm">
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-2" type="submit">
+                                        Register & Generate Gate Pass
+                                    </button>
+                                </form>
+
+                                <!-- QR Preview -->
+                                <div id="qrBox" class="text-center mt-3 d-none">
+                                    <h6>Gate Pass QR</h6>
+                                    <img id="qrImage"
+                                         style="width:180px; height:180px; border:2px solid #4b5563; padding:10px; border-radius:12px;">
+                                    <p class="mt-2 mb-0" style="font-size:0.85rem;">
+                                        Pass ID: <b id="qrPassId"></b>
+                                    </p>
+                                    <small class="text-muted">Guard QR scan karega ya pass ID se entry karega.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="section-card">
+                                <div class="section-header mb-2">
+                                    <div class="section-title">Recently Registered Visitors</div>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('expected')">
+                                        Refresh
+                                    </button>
+                                </div>
+                                <div class="table-responsive" style="max-height:380px; overflow:auto;">
+                                    <table class="table table-sm table-bordered align-middle">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Pass ID</th>
+                                            <th>Name</th>
+                                            <th>To Meet</th>
+                                            <th>Dept</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="expectedTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GUARD TAB -->
+                <div id="tab-guard" class="tab-pane-custom d-none" data-roles="admin,guard">
+                    <div class="row g-3">
+                        <div class="col-lg-5">
+                            <div class="section-card">
+                                <div class="section-header mb-2">
+                                    <div class="section-title">Security Guard Panel</div>
+                                </div>
+                                <form onsubmit="event.preventDefault();">
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">Pass ID (Manual)</label>
+                                        <input type="text" id="guardPassId" class="form-control form-control-sm"
+                                               placeholder="e.g. GATE-2025-0001">
+                                    </div>
+                                    <div class="d-flex gap-2 mt-2">
+                                        <button class="btn btn-primary w-50" type="button" onclick="guardCheckIn()">
+                                            Mark Check-In
+                                        </button>
+                                        <button class="btn btn-outline-secondary w-50" type="button" onclick="guardCheckOut()">
+                                            Mark Check-Out
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <hr class="border-secondary">
+
+                                <div class="mb-2">
+                                    <label class="form-label-sm">QR Scanner (Camera)</label>
+                                </div>
+                                <div class="d-grid gap-2 mb-2">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="startQrScanner()">
+                                        Start QR Scanner
+                                    </button>
+                                </div>
+                                <div id="qrReader" style="width:100%; max-width:320px;"></div>
+
+                                <!-- NEW: QR upload option for guard -->
+                                <div class="mt-3">
+                                    <label class="form-label-sm">Upload QR Image</label>
+                                    <input type="file" id="qrFileInput" accept="image/*"
+                                           class="form-control form-control-sm"
+                                           onchange="scanQrFromFile(event)">
+                                    <small class="text-muted" style="font-size:0.75rem;">
+                                        Gallery se QR ki photo select karein. System QR read karke
+                                        automatic check-in / check-out karega.
+                                    </small>
+                                </div>
+
+                                <div class="mt-2 small text-muted">
+                                    Reception ya visitor khud gate-pass ID/QR generate karega.
+                                    Guard QR scan kare (camera ya upload) to system automatic
+                                    check-in / check-out toggle karega.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="section-card">
+                                <div class="section-header mb-2">
+                                    <div class="section-title">Inside Visitors (Guard View)</div>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('in')">
+                                        Refresh
+                                    </button>
+                                </div>
+                                <div class="table-responsive" style="max-height:380px; overflow:auto;">
+                                    <table class="table table-sm table-bordered align-middle">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Pass ID</th>
+                                            <th>Name</th>
+                                            <th>To Meet</th>
+                                            <th>Dept</th>
+                                            <th>In Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="guardInsideTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VISITORS TAB (Admin / Reception) -->
+                <div id="tab-visitors" class="tab-pane-custom d-none" data-roles="admin,reception">
+                    <div class="section-card">
+                        <div class="section-header mb-2">
+                            <div class="section-title">All Visitors (Admin / Reporting)</div>
+                            <div class="d-flex gap-2">
+                                <select id="filterStatus" class="form-select form-select-sm" style="width:auto;">
+                                    <option value="all">All</option>
+                                    <option value="expected">Expected</option>
+                                    <option value="in">Inside</option>
+                                    <option value="out">Completed</option>
+                                </select>
+                                <input type="text" id="searchBox" class="form-control form-control-sm search-input"
+                                       placeholder="Search name/phone/pass">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsAdmin()">
+                                    Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive" style="max-height:420px; overflow:auto;">
+                            <table class="table table-sm table-bordered align-middle">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Pass ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>To Meet</th>
+                                    <th>Dept</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>In</th>
+                                    <th>Out</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody id="adminTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- /content -->
+        </div> <!-- /main -->
+    </div> <!-- /layout -->
+</div> <!-- /appScreen -->
+
+<script>
+    const API_URL = "http://127.0.0.1:5000";
+
+    let currentUser = null;
+    let selectedRoleLabel = null;
+    let qrScanner = null;
+
+    const landingScreen = document.getElementById("landingScreen");
+    const appScreen = document.getElementById("appScreen");
+    const loginOverlay = document.getElementById("loginOverlay");
+    const loginClose = document.getElementById("loginClose");
+    const loginForm = document.getElementById("loginForm");
+    const topUserInfo = document.getElementById("topUserInfo");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    const insideTableBody = document.getElementById("insideTableBody");
+    const todayTableBody = document.getElementById("todayTableBody");
+    const expectedTableBody = document.getElementById("expectedTableBody");
+    const guardInsideTableBody = document.getElementById("guardInsideTableBody");
+    const adminTableBody = document.getElementById("adminTableBody");
+
+    const statTotal = document.getElementById("statTotal");
+    const statInside = document.getElementById("statInside");
+    const statExpected = document.getElementById("statExpected");
+    const statToday = document.getElementById("statToday");
+
+    const filterStatus = document.getElementById("filterStatus");
+    const searchBox = document.getElementById("searchBox");
+
+    document.getElementById("todayDate").textContent = new Date().toLocaleDateString();
+
+    const sidebarLinks = document.querySelectorAll(".sidebar-link");
+    const tabPanes = document.querySelectorAll(".tab-pane-custom");
+
+    // Self registration result
+    const selfRegisterResult = document.getElementById("selfRegisterResult");
+
+    // ===== Guest Gate Pass lookup =====
+    async function fetchVisitorPass() {
+        const input = document.getElementById("visitorPassInput");
+        const resultBox = document.getElementById("visitorPassResult");
+        const passId = (input.value || "").trim();
+
+        if (!passId) {
+            alert("Please enter your Gate Pass ID.");
+            return;
+        }
+
+        resultBox.innerHTML = `<div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Loading gate pass...</div>`;
+
+        try {
+            const res = await fetch(`${API_URL}/visitors/pass/${encodeURIComponent(passId)}`);
+            const data = await res.json();
+
+            if (!res.ok || data.status !== "success") {
+                resultBox.innerHTML =
+                    `<div style="font-size:0.8rem;color:#fca5a5;margin-top:6px;">${data.message || "Invalid Gate Pass ID"}</div>`;
+                return;
+            }
+
+            const v = data.visitor;
+            const badgeClass =
+                v.status === "in" ? "status-in" :
+                v.status === "out" ? "status-out" : "status-expected";
+
+            resultBox.innerHTML = `
+                <div class="vp-result-card">
+                    <div class="d-flex gap-3 align-items-start">
+                        <div class="vp-qr-box">
+                            <img src="${v.qr_image}" alt="Gate Pass QR">
+                        </div>
+                        <div>
+                            <div style="font-size:0.9rem;font-weight:600;">${v.name}</div>
+                            <div>Pass ID: <b>${v.pass_id}</b></div>
+                            <div>To meet: ${v.to_meet}</div>
+                            <div>Dept: ${v.department || "-"}</div>
+                            <div>Status:
+                                <span class="badge pill-badge ${badgeClass}">${v.status}</span>
+                            </div>
+                            <div class="mt-1">Created: ${v.created_at}</div>
+                            <div>In: ${v.check_in || "-"}</div>
+                            <div>Out: ${v.check_out || "-"}</div>
+                            <div class="mt-2" style="font-size:0.75rem;color:#9ca3af;">
+                                Ye screen / QR security guard ko dikhayein. Guard scan karke
+                                aapka check-in / check-out mark karega.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (err) {
+            console.error(err);
+            alert("Error connecting to server (gate pass lookup).");
+            resultBox.innerHTML = "";
+        }
+    }
+
+    // Enter key support on gate pass input
+    const visitorPassInput = document.getElementById("visitorPassInput");
+    if (visitorPassInput) {
+        visitorPassInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                fetchVisitorPass();
+            }
+        });
+    }
+
+    // ===== NEW: Self registration from landing page =====
+    async function selfRegisterVisitor(ev) {
+        ev.preventDefault();
+
+        const name = (document.getElementById("selfName").value || "").trim();
+        const phone = (document.getElementById("selfPhone").value || "").trim();
+        const to_meet = (document.getElementById("selfToMeet").value || "").trim();
+        const department = (document.getElementById("selfDept").value || "").trim();
+        const purpose = (document.getElementById("selfPurpose").value || "").trim();
+        const vehicle_no = (document.getElementById("selfVehicle").value || "").trim();
+
+        if (!name || !phone || !to_meet) {
+            alert("Name, phone aur whom to meet required hai.");
+            return;
+        }
+
+        selfRegisterResult.innerHTML =
+            `<div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Creating gate pass...</div>`;
+
+        try {
+            const res = await fetch(`${API_URL}/visitors`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name, phone, to_meet, department, purpose, vehicle_no
+                })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok || data.status !== "success") {
+                alert(data.message || "Error while creating gate pass.");
+                selfRegisterResult.innerHTML = "";
+                return;
+            }
+
+            const v = data.visitor;
+            alert(`Gate Pass Created.\nPass ID: ${v.pass_id}`);
+
+            // form clear
+            document.getElementById("selfRegisterForm").reset();
+
+            // Visitor check input me bhi ID daal diye
+            if (visitorPassInput) {
+                visitorPassInput.value = v.pass_id;
+            }
+
+            const badgeClass =
+                v.status === "in" ? "status-in" :
+                v.status === "out" ? "status-out" : "status-expected";
+
+            selfRegisterResult.innerHTML = `
+                <div class="vp-result-card">
+                    <div class="d-flex gap-3 align-items-start">
+                        <div class="vp-qr-box">
+                            <img src="${v.qr_image}" alt="Gate Pass QR">
+                        </div>
+                        <div>
+                            <div style="font-size:0.9rem;font-weight:600;">${v.name}</div>
+                            <div>Pass ID: <b>${v.pass_id}</b></div>
+                            <div>To meet: ${v.to_meet}</div>
+                            <div>Dept: ${v.department || "-"}</div>
+                            <div>Status:
+                                <span class="badge pill-badge ${badgeClass}">${v.status}</span>
+                            </div>
+                            <div class="mt-1">Created: ${v.created_at}</div>
+                            <div class="mt-2" style="font-size:0.75rem;color:#9ca3af;">
+                                Is QR/ID ko save kar lein. Aap baad me bhi upar "Already have Gate Pass ID?"
+                                section me ID daal ke details & QR dekh sakte hain.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (err) {
+            console.error(err);
+            alert("Error connecting to server (self registration).");
+            selfRegisterResult.innerHTML = "";
+        }
+    }
+
+    // ===== Landing role dropdown click =====
+    document.querySelectorAll(".role-option").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const r = btn.dataset.role;
+            selectedRoleLabel = r;
+            const text =
+                r === "admin" ? "Admin" :
+                r === "reception" ? "Reception" :
+                "Security Guard";
+            document.getElementById("loginRoleLabel").textContent = text;
+            loginOverlay.classList.remove("d-none");
+        });
+    });
+
+    loginClose.addEventListener("click", () => {
+        loginOverlay.classList.add("d-none");
+    });
+
+    // ===== Role-based UI =====
+    function applyRoleUI() {
+        const role = currentUser ? currentUser.role : null;
+
+        document.querySelectorAll("[data-roles]").forEach(el => {
+            const roles = (el.dataset.roles || "").split(",").map(r => r.trim());
+            if (!role || !roles.includes(role)) {
+                el.classList.add("d-none");
+            } else {
+                el.classList.remove("d-none");
+            }
+        });
+
+        if (role) {
+            const label =
+                role === "admin" ? "Admin" :
+                role === "reception" ? "Reception" :
+                "Security Guard";
+            topUserInfo.textContent = `${label}: ${currentUser.name}`;
+        } else {
+            topUserInfo.textContent = "";
+        }
+
+        if (role) {
+            setDefaultTabForRole(role);
+        }
+    }
+
+    function setDefaultTabForRole(role) {
+        let firstLink = null;
+        sidebarLinks.forEach(link => {
+            const roles = (link.dataset.roles || "").split(",").map(r => r.trim());
+            if (roles.includes(role) && !firstLink) {
+                firstLink = link;
+            }
+        });
+
+        if (!firstLink) return;
+
+        sidebarLinks.forEach(l => l.classList.remove("active"));
+        firstLink.classList.add("active");
+
+        const targetId = firstLink.getAttribute("data-target");
+
+        tabPanes.forEach(pane => {
+            const roles = (pane.dataset.roles || "").split(",").map(r => r.trim());
+            if (pane.id === targetId && roles.includes(role)) {
+                pane.classList.remove("d-none");
+            } else {
+                pane.classList.add("d-none");
+            }
+        });
+    }
+
+    // Sidebar tab switch
+    sidebarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (!currentUser) return;
+            const roles = (link.dataset.roles || "").split(",").map(r => r.trim());
+            if (!roles.includes(currentUser.role)) return;
+
+            sidebarLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+
+            const target = link.getAttribute("data-target");
+            tabPanes.forEach(pane => {
+                const paneRoles = (pane.dataset.roles || "").split(",").map(r => r.trim());
+                if (pane.id === target && paneRoles.includes(currentUser.role)) {
+                    pane.classList.remove("d-none");
+                } else {
+                    pane.classList.add("d-none");
+                }
+            });
+        });
+    });
+
+    // ===== Login =====
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const id = document.getElementById("loginId").value.trim();
+            const password = document.getElementById("loginPassword").value.trim();
+
+            if (!id || !password) {
+                alert("Please fill ID and password.");
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_URL}/auth/login`, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({id, password})
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || data.status !== "success") {
+                    alert(data.message || "Login failed.");
+                    return;
+                }
+
+                currentUser = {
+                    id: data.id,
+                    name: data.name,
+                    role: data.role
+                };
+
+                if (selectedRoleLabel && selectedRoleLabel !== data.role) {
+                    alert(`You logged in as ${data.role}, not ${selectedRoleLabel}.`);
+                }
+
+                localStorage.setItem("gateSecureUser", JSON.stringify(currentUser));
+
+                landingScreen.classList.add("d-none");
+                appScreen.classList.remove("d-none");
+                loginOverlay.classList.add("d-none");
+
+                applyRoleUI();
+                await initialLoad();
+
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to server (login).");
+            }
+        });
+    }
+
+    // ===== Logout =====
+    logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("gateSecureUser");
+        currentUser = null;
+        appScreen.classList.add("d-none");
+        landingScreen.classList.remove("d-none");
+    });
+
+    // ===== Init user from localStorage =====
+    (function initUser() {
+        const saved = localStorage.getItem("gateSecureUser");
+        if (!saved) {
+            landingScreen.classList.remove("d-none");
+            appScreen.classList.add("d-none");
+            return;
+        }
+        try {
+            currentUser = JSON.parse(saved);
+        } catch (e) {
+            localStorage.removeItem("gateSecureUser");
+            landingScreen.classList.remove("d-none");
+            appScreen.classList.add("d-none");
+            return;
+        }
+
+        landingScreen.classList.add("d-none");
+        appScreen.classList.remove("d-none");
+        applyRoleUI();
+        initialLoad();
+    })();
+
+    // ===== Stats =====
+    async function loadStats() {
+        try {
+            const res = await fetch(`${API_URL}/stats`);
+            const data = await res.json();
+            statTotal.textContent = data.total;
+            statInside.textContent = data.inside_now;
+            statExpected.textContent = data.expected_now;
+            statToday.textContent = data.today;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    // ===== Reception new visitor =====
+    const visitorForm = document.getElementById("visitorForm");
+    if (visitorForm) {
+        visitorForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const payload = {
+                name: document.getElementById("vName").value.trim(),
+                phone: document.getElementById("vPhone").value.trim(),
+                to_meet: document.getElementById("vToMeet").value.trim(),
+                department: document.getElementById("vDept").value.trim(),
+                purpose: document.getElementById("vPurpose").value.trim(),
+                vehicle_no: document.getElementById("vVehicle").value.trim()
+            };
+
+            if (!payload.name || !payload.phone || !payload.to_meet) {
+                alert("Name, phone and whom to meet are required.");
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_URL}/visitors`, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+                if (!res.ok || data.status !== "success") {
+                    alert(data.message || "Error while registering visitor.");
+                    return;
+                }
+
+                visitorForm.reset();
+                alert(`Gate Pass Generated.\nPass ID: ${data.visitor.pass_id}`);
+
+                document.getElementById("qrBox").classList.remove("d-none");
+                document.getElementById("qrImage").src = data.visitor.qr_image;
+                document.getElementById("qrPassId").textContent = data.visitor.pass_id;
+
+                await loadStats();
+                await loadVisitorsTable("expected");
+                await loadVisitorsTable("today");
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to server.");
+            }
+        });
+    }
+
+    // ===== Tables (Dashboard / Guard / Reception) =====
+    async function loadVisitorsTable(mode) {
+        try {
+            if (mode === "in") {
+                const res = await fetch(`${API_URL}/visitors?status=in`);
+                const data = await res.json();
+
+                insideTableBody.innerHTML = "";
+                guardInsideTableBody.innerHTML = "";
+
+                data.forEach(v => {
+                    const rowHTML = `
+                        <td>${v.pass_id}</td>
+                        <td>${v.name}</td>
+                        <td>${v.to_meet}</td>
+                        <td>${v.department || "-"}</td>
+                        <td>${v.check_in || "-"}</td>
+                    `;
+                    const tr1 = document.createElement("tr");
+                    tr1.innerHTML = rowHTML;
+                    insideTableBody.appendChild(tr1);
+
+                    const tr2 = document.createElement("tr");
+                    tr2.innerHTML = rowHTML;
+                    guardInsideTableBody.appendChild(tr2);
+                });
+            } else if (mode === "today") {
+                const res = await fetch(`${API_URL}/visitors?today=true`);
+                const data = await res.json();
+
+                todayTableBody.innerHTML = "";
+                data.forEach(v => {
+                    const badgeClass =
+                        v.status === "in" ? "status-in" :
+                        v.status === "out" ? "status-out" : "status-expected";
+
+                    const rowHTML = `
+                        <td>${v.pass_id}</td>
+                        <td>${v.name}</td>
+                        <td><span class="badge pill-badge ${badgeClass}">${v.status}</span></td>
+                        <td>${v.created_at}</td>
+                    `;
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = rowHTML;
+                    todayTableBody.appendChild(tr);
+                });
+            } else if (mode === "expected") {
+                const res = await fetch(`${API_URL}/visitors?status=expected`);
+                const data = await res.json();
+
+                expectedTableBody.innerHTML = "";
+                data.forEach(v => {
+                    const rowHTML = `
+                        <td>${v.pass_id}</td>
+                        <td>${v.name}</td>
+                        <td>${v.to_meet}</td>
+                        <td>${v.department || "-"}</td>
+                        <td><span class="badge pill-badge status-expected">expected</span></td>
+                    `;
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = rowHTML;
+                    expectedTableBody.appendChild(tr);
+                });
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    // ===== Guard manual check-in/out =====
+    async function guardCheckIn() {
+        const pass_id = document.getElementById("guardPassId").value.trim();
+        if (!pass_id) {
+            alert("Please enter Pass ID.");
+            return;
+        }
+        try {
+            const res = await fetch(`${API_URL}/visitors/checkin`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({pass_id})
+            });
+            const data = await res.json();
+            alert(data.message || (res.ok ? "Check-in done." : "Error"));
+            await loadStats();
+            await loadVisitorsTable("in");
+            await loadVisitorsTable("today");
+        } catch (e) {
+            console.error(e);
+            alert("Error connecting to server.");
+        }
+    }
+
+    async function guardCheckOut() {
+        const pass_id = document.getElementById("guardPassId").value.trim();
+        if (!pass_id) {
+            alert("Please enter Pass ID.");
+            return;
+        }
+        try {
+            const res = await fetch(`${API_URL}/visitors/checkout`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({pass_id})
+            });
+            const data = await res.json();
+            alert(data.message || (res.ok ? "Check-out done." : "Error"));
+            await loadStats();
+            await loadVisitorsTable("in");
+            await loadVisitorsTable("today");
+        } catch (e) {
+            console.error(e);
+            alert("Error connecting to server.");
+        }
+    }
+
+    // ===== Common QR scan handler (camera + upload) =====
+    async function processQrScan(passIdFromQr) {
+        const pass_id = (passIdFromQr || "").trim();
+        if (!pass_id) {
+            alert("QR se valid Pass ID nahi mila.");
+            return;
+        }
+
+        // Guard input me bhi autofill
+        const guardInput = document.getElementById("guardPassId");
+        if (guardInput) guardInput.value = pass_id;
+
+        try {
+            const res = await fetch(`${API_URL}/qr-scan`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({pass_id})
+            });
+            const data = await res.json();
+            alert(data.message || (res.ok ? "QR scan processed." : "Error processing QR."));
+            await loadStats();
+            await loadVisitorsTable("in");
+            await loadVisitorsTable("today");
+        } catch (err) {
+            console.error(err);
+            alert("Error processing QR scan.");
+        }
+    }
+
+    // ===== Guard QR Scanner (camera) =====
+    function startQrScanner() {
+        if (qrScanner) return;
+
+        function onScanSuccess(decodedText) {
+            processQrScan(decodedText);
+        }
+
+        qrScanner = new Html5QrcodeScanner("qrReader", { fps: 10, qrbox: 250 });
+        qrScanner.render(onScanSuccess);
+    }
+
+    // ===== Guard QR upload from file =====
+    async function scanQrFromFile(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        if (!window.Html5Qrcode) {
+            alert("QR library load nahi hui. Page reload karke try karein.");
+            return;
+        }
+
+        try {
+            const html5QrCode = new Html5Qrcode("qrReader");
+            const decodedText = await html5QrCode.scanFile(file, true);
+            await html5QrCode.clear();
+            await processQrScan(decodedText);
+        } catch (err) {
+            console.error(err);
+            alert("QR read nahi hua. Clear image try karein.");
+        } finally {
+            // input ko reset kar do taaki same file dobara bhi choose kar sake
+            event.target.value = "";
+        }
+    }
+
+    // ===== Admin/Reception visitor list =====
+    async function loadVisitorsAdmin() {
+        try {
+            const status = filterStatus.value;
+            const search = (searchBox.value || "").trim();
+
+            let url = `${API_URL}/visitors?status=${encodeURIComponent(status)}`;
+            if (search) {
+                url += `&search=${encodeURIComponent(search)}`;
+            }
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+            adminTableBody.innerHTML = "";
+            data.forEach(v => {
+                const badgeClass =
+                    v.status === "in" ? "status-in" :
+                    v.status === "out" ? "status-out" : "status-expected";
+
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${v.id}</td>
+                    <td>${v.pass_id}</td>
+                    <td>${v.name}</td>
+                    <td>${v.phone}</td>
+                    <td>${v.to_meet}</td>
+                    <td>${v.department || "-"}</td>
+                    <td><span class="badge pill-badge ${badgeClass}">${v.status}</span></td>
+                    <td>${v.created_at}</td>
+                    <td>${v.check_in || "-"}</td>
+                    <td>${v.check_out || "-"}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="deleteVisitor(${v.id})">
+                            Delete
+                        </button>
+                    </td>
+                `;
+                adminTableBody.appendChild(tr);
+            });
+
+        } catch (e) {
+            console.error(e);
+            alert("Error loading visitors.");
+        }
+    }
+
+    async function deleteVisitor(id) {
+        if (!confirm("Delete this visitor record?")) return;
+        try {
+            await fetch(`${API_URL}/visitors/${id}`, {method: "DELETE"});
+            await loadVisitorsAdmin();
+            await loadStats();
+            await loadVisitorsTable("in");
+            await loadVisitorsTable("today");
+        } catch (e) {
+            console.error(e);
+            alert("Error deleting visitor.");
+        }
+    }
+
+    if (filterStatus) {
+        filterStatus.addEventListener("change", loadVisitorsAdmin);
+    }
+    if (searchBox) {
+        searchBox.addEventListener("input", () => {
+            loadVisitorsAdmin();
+        });
+    }
+
+    // ===== Initial load after login =====
+    async function initialLoad() {
+        await loadStats();
+        await loadVisitorsTable("in");
+        await loadVisitorsTable("today");
+        await loadVisitorsTable("expected");
+        await loadVisitorsAdmin();
+    }
+</script>
+
+</body>
+</html>
