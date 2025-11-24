@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from datetime import datetime, date
 import qrcode
@@ -7,6 +7,13 @@ import base64
 
 app = Flask(__name__)
 CORS(app)
+
+# ====================== LANDING / FRONTEND ======================
+# / pe index.html serve karega (jo repo ke root me hai)
+@app.route("/")
+def serve_index():
+    return send_from_directory(".", "index.html")
+
 
 # ====================== DEMO USERS ======================
 # Login ke liye simple hard-coded users
@@ -158,7 +165,7 @@ def create_visitor():
         "check_in": None,
         "check_out": None,
         "qr_image": qr_image,
-        "expired": False,        # NEW: one-time use flag
+        "expired": False,        # one-time use flag
     }
 
     visitors.append(visitor)
@@ -248,7 +255,7 @@ def visitor_checkin():
     if not v:
         return jsonify({"status": "error", "message": "Invalid Pass ID."}), 404
 
-    # NEW: one-time use check
+    # one-time use check
     if v.get("expired"):
         return jsonify({"status": "error", "message": "Gate pass is expired. Cannot be used again."}), 400
 
@@ -279,7 +286,7 @@ def visitor_checkout():
     if not v:
         return jsonify({"status": "error", "message": "Invalid Pass ID."}), 404
 
-    # NEW: one-time use check
+    # one-time use check
     if v.get("expired"):
         return jsonify({"status": "error", "message": "Gate pass is expired. Cannot be used again."}), 400
 
@@ -314,7 +321,7 @@ def qr_scan():
     if not v:
         return jsonify({"status": "error", "message": "Invalid Pass ID in QR."}), 404
 
-    # NEW: already expired?
+    # already expired?
     if v.get("expired"):
         return jsonify({"status": "error", "message": "Gate pass is expired. Scan not allowed."}), 400
 
@@ -340,5 +347,5 @@ def qr_scan():
 
 # ====================== MAIN ============================
 if __name__ == "__main__":
-    # Debug mode: True (dev), host: 127.0.0.1, port: 5000 (default)
+    # Local dev ke liye
     app.run(debug=True)
