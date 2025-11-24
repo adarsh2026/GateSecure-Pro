@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>GateSecure Pro – QR Visitor & Gate Pass System</title>
+    <!-- NEW: Mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- QR Scanner Library (Guard Panel) -->
     <script src="https://unpkg.com/html5-qrcode"></script>
@@ -31,8 +31,13 @@
             color: #e5e7eb;
         }
 
-        .pointer { cursor: pointer; }
-        .d-none { display: none !important; }
+        .pointer {
+            cursor: pointer;
+        }
+
+        .d-none {
+            display: none !important;
+        }
 
         /* ===================== LANDING PAGE ===================== */
         .landing-wrapper {
@@ -74,7 +79,7 @@
             color: #f9fafb;
             font-size: 1.2rem;
             font-weight: 800;
-            box-shadow: 0 10px 30px rgba(15,23,42,0.7);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
         }
 
         .logo-text-main {
@@ -105,9 +110,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(15,23,42,0.8);
+            background: rgba(15, 23, 42, 0.8);
             color: #e5e7eb;
-            border: 1px solid rgba(148,163,184,0.4);
+            border: 1px solid rgba(148, 163, 184, 0.4);
             backdrop-filter: blur(12px);
         }
 
@@ -117,7 +122,7 @@
 
         .header-login-btn:hover {
             border-color: #22c55e;
-            box-shadow: 0 0 20px rgba(34,197,94,0.25);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.25);
         }
 
         .role-menu {
@@ -126,7 +131,7 @@
             right: 0;
             background: #020617;
             border-radius: 16px;
-            box-shadow: 0 18px 60px rgba(15,23,42,0.9);
+            box-shadow: 0 18px 60px rgba(15, 23, 42, 0.9);
             padding: 6px 0;
             min-width: 230px;
             opacity: 0;
@@ -134,7 +139,7 @@
             transform: translateY(4px);
             transition: all .18s ease;
             z-index: 40;
-            border: 1px solid rgba(148,163,184,0.3);
+            border: 1px solid rgba(148, 163, 184, 0.3);
         }
 
         .header-login-wrapper:hover .role-menu {
@@ -176,7 +181,7 @@
         }
 
         .role-menu button:hover {
-            background: rgba(15,23,42,0.85);
+            background: rgba(15, 23, 42, 0.85);
         }
 
         /* Hero section */
@@ -190,11 +195,11 @@
 
         .landing-card {
             width: 100%;
-            background: radial-gradient(circle at top left, rgba(37,99,235,0.25), rgba(15,23,42,0.98));
+            background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.25), rgba(15, 23, 42, 0.98));
             border-radius: 26px;
             padding: 28px 32px 26px;
-            box-shadow: 0 26px 80px rgba(15,23,42,0.9);
-            border: 1px solid rgba(148,163,184,0.25);
+            box-shadow: 0 26px 80px rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.25);
             display: grid;
             grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.4fr);
             gap: 28px;
@@ -207,9 +212,9 @@
             position: absolute;
             inset: -40%;
             background:
-                radial-gradient(circle at 10% 0, rgba(56,189,248,0.25), transparent 65%),
-                radial-gradient(circle at 90% 0, rgba(34,197,94,0.18), transparent 60%),
-                radial-gradient(circle at 50% 100%, rgba(37,99,235,0.18), transparent 65%);
+                radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.25), transparent 65%),
+                radial-gradient(circle at 90% 0, rgba(34, 197, 94, 0.18), transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.18), transparent 65%);
             opacity: 0.9;
             z-index: -1;
         }
@@ -225,11 +230,11 @@
             gap: 6px;
             padding: 3px 11px;
             border-radius: 999px;
-            background: rgba(15,23,42,0.75);
+            background: rgba(15, 23, 42, 0.75);
             font-size: 0.76rem;
             color: #e5e7eb;
             margin-bottom: 8px;
-            border: 1px solid rgba(148,163,184,0.4);
+            border: 1px solid rgba(148, 163, 184, 0.4);
         }
 
         .landing-badge span.dot {
@@ -280,9 +285,9 @@
         .tag-pill {
             font-size: 0.75rem;
             border-radius: 999px;
-            background: rgba(15,23,42,0.8);
+            background: rgba(15, 23, 42, 0.8);
             padding: 3px 10px;
-            border: 1px solid rgba(148,163,184,0.35);
+            border: 1px solid rgba(148, 163, 184, 0.35);
             color: #e5e7eb;
         }
 
@@ -303,8 +308,8 @@
             margin-top: 14px;
             padding: 10px 12px;
             border-radius: 14px;
-            background: rgba(15,23,42,0.9);
-            border: 1px solid rgba(148,163,184,0.45);
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.45);
             max-width: 420px;
             font-size: 0.82rem;
         }
@@ -328,8 +333,8 @@
         .visitor-pass-input {
             flex: 1;
             border-radius: 999px;
-            border: 1px solid rgba(148,163,184,0.6);
-            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            background: rgba(15, 23, 42, 0.9);
             color: #e5e7eb;
             font-size: 0.8rem;
             padding: 6px 10px;
@@ -342,7 +347,7 @@
         .visitor-pass-input:focus {
             outline: none;
             border-color: #38bdf8;
-            box-shadow: 0 0 0 1px rgba(56,189,248,0.5);
+            box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
         }
 
         .visitor-pass-btn {
@@ -369,7 +374,7 @@
             border-radius: 14px;
             padding: 10px 10px;
             background: radial-gradient(circle at top left, #020617, #020617 60%, #020617 100%);
-            border: 1px solid rgba(148,163,184,0.5);
+            border: 1px solid rgba(148, 163, 184, 0.5);
             font-size: 0.8rem;
         }
 
@@ -406,8 +411,8 @@
         .hero-monitor {
             border-radius: 22px;
             padding: 16px 16px 14px;
-            background: linear-gradient(135deg, rgba(15,23,42,0.95), #020617);
-            border: 1px solid rgba(148,163,184,0.3);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), #020617);
+            border: 1px solid rgba(148, 163, 184, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -428,9 +433,9 @@
             font-size: 0.7rem;
             padding: 3px 7px;
             border-radius: 999px;
-            background: rgba(34,197,94,0.12);
+            background: rgba(34, 197, 94, 0.12);
             color: #bbf7d0;
-            border: 1px solid rgba(34,197,94,0.4);
+            border: 1px solid rgba(34, 197, 94, 0.4);
         }
 
         .hero-mini-stats {
@@ -447,7 +452,7 @@
 
         .hero-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(148,163,184,0.7), transparent);
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.7), transparent);
             margin: 10px 0 7px;
         }
 
@@ -461,23 +466,23 @@
             padding: 4px 0;
         }
 
-        .hero-row + .hero-row {
-            border-top: 1px dashed rgba(55,65,81,0.7);
+        .hero-row+.hero-row {
+            border-top: 1px dashed rgba(55, 65, 81, 0.7);
         }
 
         .hero-tag-inline {
             font-size: 0.72rem;
             padding: 2px 6px;
             border-radius: 999px;
-            background: rgba(15,23,42,0.9);
-            border: 1px solid rgba(148,163,184,0.4);
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.4);
         }
 
         .hero-glow {
             position: absolute;
             width: 220px;
             height: 220px;
-            background: radial-gradient(circle, rgba(56,189,248,0.45), transparent);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent);
             border-radius: 999px;
             top: -40px;
             right: -40px;
@@ -523,7 +528,7 @@
         .login-backdrop {
             position: absolute;
             inset: 0;
-            background: rgba(15,23,42,0.8);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(8px);
         }
 
@@ -532,10 +537,10 @@
             width: 370px;
             border-radius: 20px;
             background: #020617;
-            box-shadow: 0 24px 80px rgba(15,23,42,0.9);
+            box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
             z-index: 51;
             overflow: hidden;
-            border: 1px solid rgba(148,163,184,0.45);
+            border: 1px solid rgba(148, 163, 184, 0.45);
         }
 
         .login-top-strip {
@@ -554,9 +559,9 @@
             border-radius: 999px;
             padding: 3px 10px;
             font-size: 0.75rem;
-            background: rgba(15,23,42,0.9);
+            background: rgba(15, 23, 42, 0.9);
             color: #c4ddff;
-            border: 1px solid rgba(148,163,184,0.7);
+            border: 1px solid rgba(148, 163, 184, 0.7);
             margin-bottom: 6px;
         }
 
@@ -692,7 +697,7 @@
             background: #ffffff;
             border-radius: 14px;
             padding: 14px 16px;
-            box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
             border: 1px solid #e5e7eb;
             position: relative;
             overflow: hidden;
@@ -702,7 +707,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            border-top: 3px solid rgba(37,99,235,0.75);
+            border-top: 3px solid rgba(37, 99, 235, 0.75);
             border-radius: inherit;
             pointer-events: none;
         }
@@ -732,14 +737,14 @@
             border-radius: 18px;
             padding: 16px 16px 14px;
             border: 1px solid #e5e7eb;
-            box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
             position: relative;
             overflow: hidden;
         }
 
         .section-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
         }
 
         .section-header {
@@ -823,7 +828,7 @@
         #filterStatus:focus,
         .form-control:focus {
             border-color: #2563eb !important;
-            box-shadow: 0 0 0 1px rgba(37,99,235,0.35) !important;
+            box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35) !important;
         }
 
         /* STATUS BADGES */
@@ -853,6 +858,7 @@
             .sidebar {
                 display: none;
             }
+
             .layout {
                 flex-direction: column;
             }
@@ -865,671 +871,814 @@
             background: #0f172a;
             border: 1px solid #1f2937;
         }
+
+        /* ========== MOBILE ENHANCEMENTS (ADDED) ========== */
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .landing-shell {
+                padding: 12px 12px 24px;
+            }
+
+            .landing-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .header-login-wrapper {
+                align-self: flex-end;
+            }
+
+            .landing-title {
+                font-size: 1.8rem;
+            }
+
+            .landing-sub {
+                font-size: 0.9rem;
+            }
+
+            .landing-card {
+                border-radius: 18px;
+            }
+
+            .visitor-pass-card {
+                max-width: 100%;
+            }
+
+            .hero-monitor {
+                margin-top: 10px;
+            }
+
+            .hero-mini-stats {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            /* App layout mobile */
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                display: flex;
+                /* override old display:none */
+                flex-direction: column;
+                width: 100%;
+                position: sticky;
+                top: 0;
+                z-index: 20;
+            }
+
+            .sidebar-header {
+                padding: 12px 16px;
+                font-size: 0.95rem;
+            }
+
+            .sidebar-menu {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 6px 8px 8px;
+                gap: 4px;
+            }
+
+            .sidebar-link {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                border-radius: 999px;
+                padding-left: 12px;
+            }
+
+            .sidebar-link:hover,
+            .sidebar-link.active {
+                padding-left: 12px;
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+
+            .content {
+                padding: 12px 12px 16px;
+            }
+
+            .stat-card {
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .landing-title {
+                font-size: 1.6rem;
+            }
+
+            .landing-card {
+                padding: 18px 14px;
+            }
+
+            .hero-mini-stats div strong {
+                font-size: 1rem;
+            }
+
+            .visitor-pass-row {
+                flex-direction: column;
+            }
+
+            .visitor-pass-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-monitor {
+                padding: 12px 12px 10px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<!-- ================= LANDING SCREEN ================= -->
-<div id="landingScreen" class="landing-wrapper">
-    <div class="landing-shell">
-        <header class="landing-header">
-            <div class="landing-logo">
-                <div class="logo-icon">G</div>
-                <div>
-                    <div class="logo-text-main">
-                        GateSecure <span class="logo-text-pro">Pro</span>
-                    </div>
-                    <div class="logo-text-sub">QR-Based Visitor & Gate Pass Management</div>
-                </div>
-            </div>
 
-            <div class="header-login-wrapper">
-                <button class="header-login-btn">
-                    <span class="icon">🛂</span>
-                    <span>Login</span>
-                    <span style="font-size:0.7rem;">▼</span>
-                </button>
-                <div class="role-menu">
-                    <div class="role-menu-title">Sign in as</div>
-                    <button type="button" class="role-option" data-role="admin">
-                        <span class="role-label">
-                            <span>🧩 Admin</span>
-                        </span>
-                        <small>Full control & reports</small>
+
+    <!-- ================= LANDING SCREEN ================= -->
+    <div id="landingScreen" class="landing-wrapper">
+        <div class="landing-shell">
+            <header class="landing-header">
+                <div class="landing-logo">
+                    <div class="logo-icon">G</div>
+                    <div>
+                        <div class="logo-text-main">
+                            GateSecure <span class="logo-text-pro">Pro</span>
+                        </div>
+                        <div class="logo-text-sub">QR-Based Visitor & Gate Pass Management</div>
+                    </div>
+                </div>
+
+                <div class="header-login-wrapper">
+                    <button class="header-login-btn">
+                        <span class="icon">🛂</span>
+                        <span>Login</span>
+                        <span style="font-size:0.7rem;">▼</span>
                     </button>
-                    <button type="button" class="role-option" data-role="reception">
-                        <span class="role-label">
-                            <span>📝 Reception</span>
-                        </span>
-                        <small>Register visitors & assign gate-pass</small>
-                    </button>
-                    <button type="button" class="role-option" data-role="guard">
-                        <span class="role-label">
-                            <span>🚧 Security Guard</span>
-                        </span>
-                        <small>Check-in / Check-out at gate</small>
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <main class="landing-main">
-            <div class="landing-card">
-                <div class="landing-left">
-                    <div class="landing-badge">
-                        <span class="dot"></span>
-                        <span>Live security dashboard</span>
-                        <span style="font-size:0.75rem; color:#9ca3af;">QR gate-pass · Role-based control</span>
-                    </div>
-                    <h1 class="landing-title">
-                        Smart, secure<br>
-                        <span class="highlight">QR-based entry</span> for your gate.
-                    </h1>
-                    <p class="landing-sub">
-                        GateSecure Pro ek role-based visitor management system hai jisme
-                        <b>Admin</b>, <b>Reception</b> aur <b>Security Guard</b> ke liye
-                        alag-alag panels hain. Har visitor ko unique gate-pass ID + QR milta hai,
-                        jisse entry/exit track karna super easy ho jata hai.
-                    </p>
-
-                    <ul class="landing-points">
-                        <li>✅ Reception: One-click visitor registration + instant QR gate-pass</li>
-                        <li>✅ Guard: QR/pass ID se automatic check-in / check-out toggle</li>
-                        <li>✅ Admin: Total visitors, live inside count, daily stats & full history</li>
-                    </ul>
-
-                    <div class="tag-row">
-                        <span class="tag-pill">Python (Flask)</span>
-                        <span class="tag-pill">HTML5</span>
-                        <span class="tag-pill">CSS3</span>
-                        <span class="tag-pill">Bootstrap 5</span>
-                        <span class="tag-pill">REST APIs</span>
-                        <span class="tag-pill">QR Code Integration</span>
-                    </div>
-
-                    <p class="landing-meta">
-                        Perfect project to highlight in resume/interview:
-                        security, real-time systems, REST APIs, QR automation & role-based UI.
-                    </p>
-                    <p class="landing-cta-note">
-                        🔐 Upar top-right pe cursor le jao → role select karo → login karke
-                        <b>GateSecure Pro dashboard</b> dekh sakte ho.
-                    </p>
-
-                    <!-- Guest Gate Pass lookup (Visitor Check – as it is) -->
-                    <div class="visitor-pass-card">
-                        <div class="visitor-pass-title">Already have a Gate Pass ID?</div>
-                        <div class="visitor-pass-desc">
-                            Apna Gate Pass ID daalo, QR aur basic details dekho, aur guard ko ye screen dikhao.
-                        </div>
-                        <div class="visitor-pass-row">
-                            <input id="visitorPassInput"
-                                   class="visitor-pass-input"
-                                   placeholder="e.g. GATE-2025-0003">
-                            <button class="visitor-pass-btn" type="button" onclick="fetchVisitorPass()">
-                                View Pass
-                            </button>
-                        </div>
-                        <div id="visitorPassResult" class="vp-result"></div>
-                    </div>
-
-                    <!-- NEW: Self registration – Get Gate Pass ID from landing itself -->
-                    <div class="visitor-pass-card">
-                        <div class="visitor-pass-title">Don’t have a Gate Pass ID?</div>
-                        <div class="visitor-pass-desc">
-                            Yaha se aap khud details fill karke <b>Gate Pass ID + QR</b> le sakte ho.
-                            Ye record reception/admin/guard panel me bhi automatically chala jayega.
-                        </div>
-
-                        <form id="selfRegisterForm" onsubmit="selfRegisterVisitor(event)">
-                            <div class="visitor-self-field">
-                                <input id="selfName" class="visitor-pass-input" placeholder="Visitor Name *">
-                            </div>
-                            <div class="visitor-self-field">
-                                <input id="selfPhone" class="visitor-pass-input" placeholder="Phone *">
-                            </div>
-                            <div class="visitor-self-field">
-                                <input id="selfToMeet" class="visitor-pass-input" placeholder="Whom to Meet * (Person name)">
-                            </div>
-                            <div class="visitor-self-field">
-                                <input id="selfDept" class="visitor-pass-input" placeholder="Department (optional)">
-                            </div>
-                            <div class="visitor-self-field">
-                                <input id="selfPurpose" class="visitor-pass-input" placeholder="Purpose (optional)">
-                            </div>
-                            <div class="visitor-self-field">
-                                <input id="selfVehicle" class="visitor-pass-input" placeholder="Vehicle No. (optional)">
-                            </div>
-
-                            <button class="visitor-pass-btn w-100 mt-2" type="submit">
-                                Get New Gate Pass ID
-                            </button>
-                        </form>
-
-                        <div id="selfRegisterResult" class="vp-result"></div>
-                    </div>
-                </div>
-
-                <div class="landing-right">
-                    <div class="hero-monitor">
-                        <div class="hero-glow"></div>
-                        <div class="hero-monitor-top">
-                            <div>
-                                <div style="font-size:0.75rem; color:#9ca3af;">Gate Monitor · Live</div>
-                                <div class="hero-monitor-title">Campus Main Gate – GateSecure Pro</div>
-                            </div>
-                            <span class="hero-chip">QR Gate-Pass Active</span>
-                        </div>
-
-                        <div class="hero-mini-stats">
-                            <div>
-                                <span style="color:#9ca3af;">Inside Now</span>
-                                <strong>18</strong>
-                            </div>
-                            <div>
-                                <span style="color:#9ca3af;">Today’s Visitors</span>
-                                <strong>72</strong>
-                            </div>
-                            <div>
-                                <span style="color:#9ca3af;">Avg Stay</span>
-                                <strong>19 min</strong>
-                            </div>
-                        </div>
-
-                        <div class="hero-divider"></div>
-
-                        <div class="hero-rows">
-                            <div class="hero-row">
-                                <span>Gate Pass #GATE-2025-0072</span>
-                                <span class="hero-tag-inline">Inside · QR Verified</span>
-                            </div>
-                            <div class="hero-row">
-                                <span>Reception → New visitor registered</span>
-                                <span style="color:#a5b4fc;">QR generated</span>
-                            </div>
-                            <div class="hero-row">
-                                <span>Guard → QR scan at entry</span>
-                                <span style="color:#6ee7b7;">Check-in logged</span>
-                            </div>
-                            <div class="hero-row">
-                                <span>Admin → Dashboard updated</span>
-                                <span style="color:#fbbf24;">Live analytics</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-bottom-strip">
-                            <span>Role-based control: <span class="accent">Admin · Reception · Guard</span></span>
-                            <span style="font-size:0.7rem;">Powered by Flask + QR Code</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</div>
-
-<!-- ================= LOGIN POPUP ================= -->
-<div id="loginOverlay" class="login-overlay d-none">
-    <div class="login-backdrop"></div>
-    <div class="login-card">
-        <div class="login-top-strip"></div>
-        <div class="login-close" id="loginClose">&times;</div>
-        <div class="login-inner">
-            <div class="login-role-chip">
-                <span>🔐 Logging in as</span>
-                <span id="loginRoleLabel">User</span>
-            </div>
-            <div class="login-title mb-1">Welcome to GateSecure Pro</div>
-            <div class="login-sub mb-2">Enter your user ID & password to open your panel.</div>
-
-            <form id="loginForm">
-                <div class="mb-2">
-                    <label class="form-label-sm">User ID</label>
-                    <input type="text" id="loginId" class="form-control form-control-sm" required>
-                </div>
-                <div class="mb-2">
-                    <label class="form-label-sm">Password</label>
-                    <input type="password" id="loginPassword" class="form-control form-control-sm" required>
-                </div>
-                <button class="btn btn-primary w-100 mt-2" type="submit">
-                    Login
-                </button>
-                <div class="mt-3 text-muted" style="font-size:0.75rem;">
-                    Demo IDs:
-                    <ul class="mb-0">
-                        <li>Admin → <b>admin1 / admin123</b></li>
-                        <li>Reception → <b>reception1 / recept123</b></li>
-                        <li>Guard → <b>guard1 / guard123</b></li>
-                    </ul>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- ================= APP SCREEN (AFTER LOGIN) ================= -->
-<div id="appScreen" class="d-none">
-    <div class="layout">
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                GateSecure<span> Pro</span>
-            </div>
-            <div class="sidebar-menu">
-                <a class="sidebar-link active"
-                   data-target="tab-dashboard"
-                   data-roles="admin,reception,guard">
-                    📊 Dashboard
-                </a>
-                <a class="sidebar-link"
-                   data-target="tab-reception"
-                   data-roles="admin,reception">
-                    📝 Reception (New Visitor)
-                </a>
-                <a class="sidebar-link"
-                   data-target="tab-guard"
-                   data-roles="admin,guard">
-                    🚧 Security Guard
-                </a>
-                <a class="sidebar-link"
-                   data-target="tab-visitors"
-                   data-roles="admin,reception">
-                    📋 All Visitors
-                </a>
-            </div>
-            <div class="sidebar-footer">
-                GateSecure Pro<br>
-                <span class="text-success">●</span> Flask · QR · Role-Based
-            </div>
-        </aside>
-
-        <!-- MAIN -->
-        <div class="main">
-            <!-- TOPBAR -->
-            <div class="topbar">
-                <div>
-                    <div class="topbar-title">GateSecure Pro Dashboard</div>
-                    <div class="topbar-sub">Monitor visitors, QR gate-passes, and live security flow.</div>
-                </div>
-                <div class="d-flex flex-column align-items-end">
-                    <div id="topUserInfo" class="small text-muted mb-1"></div>
-                    <div class="d-flex gap-2">
-                        <div class="badge bg-light text-muted">
-                            Date: <span id="todayDate"></span>
-                        </div>
-                        <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">
-                            Logout
+                    <div class="role-menu">
+                        <div class="role-menu-title">Sign in as</div>
+                        <button type="button" class="role-option" data-role="admin">
+                            <span class="role-label">
+                                <span>🧩 Admin</span>
+                            </span>
+                            <small>Full control & reports</small>
+                        </button>
+                        <button type="button" class="role-option" data-role="reception">
+                            <span class="role-label">
+                                <span>📝 Reception</span>
+                            </span>
+                            <small>Register visitors & assign gate-pass</small>
+                        </button>
+                        <button type="button" class="role-option" data-role="guard">
+                            <span class="role-label">
+                                <span>🚧 Security Guard</span>
+                            </span>
+                            <small>Check-in / Check-out at gate</small>
                         </button>
                     </div>
                 </div>
-            </div>
+            </header>
 
-            <!-- CONTENT -->
-            <div class="content">
-                <!-- TOP STATS -->
-                <div class="row g-3 mb-3">
-                    <div class="col-md-3 col-6">
-                        <div class="stat-card">
-                            <div class="stat-label">Total Visitors</div>
-                            <div id="statTotal" class="stat-value">0</div>
-                            <span class="badge bg-light text-muted stat-pill">All-time</span>
+            <main class="landing-main">
+                <div class="landing-card">
+                    <div class="landing-left">
+                        <div class="landing-badge">
+                            <span class="dot"></span>
+                            <span>Live security dashboard</span>
+                            <span style="font-size:0.75rem; color:#9ca3af;">QR gate-pass · Role-based control</span>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="stat-card">
-                            <div class="stat-label">Inside Now</div>
-                            <div id="statInside" class="stat-value">0</div>
-                            <span class="badge bg-light text-muted stat-pill">Currently inside</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="stat-card">
-                            <div class="stat-label">Expected</div>
-                            <div id="statExpected" class="stat-value">0</div>
-                            <span class="badge bg-light text-muted stat-pill">Registered, not in</span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="stat-card">
-                            <div class="stat-label">Today Visitors</div>
-                            <div id="statToday" class="stat-value">0</div>
-                            <span class="badge bg-light text-muted stat-pill">Created today</span>
-                        </div>
-                    </div>
-                </div>
+                        <h1 class="landing-title">
+                            Smart, secure<br>
+                            <span class="highlight">QR-based entry</span> for your gate.
+                        </h1>
+                        <p class="landing-sub">
+                            GateSecure Pro ek role-based visitor management system hai jisme
+                            <b>Admin</b>, <b>Reception</b> aur <b>Security Guard</b> ke liye
+                            alag-alag panels hain. Har visitor ko unique gate-pass ID + QR milta hai,
+                            jisse entry/exit track karna super easy ho jata hai.
+                        </p>
 
-                <!-- DASHBOARD TAB -->
-                <div id="tab-dashboard" class="tab-pane-custom" data-roles="admin,reception,guard">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="section-card">
-                                <div class="section-header mb-2">
-                                    <div>
-                                        <div class="section-title">Visitors Inside</div>
-                                        <div class="section-sub">Currently inside the premises.</div>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('in')">
-                                        Refresh
-                                    </button>
-                                </div>
-                                <div class="table-responsive" style="max-height:320px; overflow:auto;">
-                                    <table class="table table-sm table-bordered align-middle">
-                                        <thead class="table-light">
-                                        <tr>
-                                            <th>Pass ID</th>
-                                            <th>Name</th>
-                                            <th>To Meet</th>
-                                            <th>Dept</th>
-                                            <th>In Time</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="insideTableBody"></tbody>
-                                    </table>
-                                </div>
+                        <ul class="landing-points">
+                            <li>✅ Reception: One-click visitor registration + instant QR gate-pass</li>
+                            <li>✅ Guard: QR/pass ID se automatic check-in / check-out toggle</li>
+                            <li>✅ Admin: Total visitors, live inside count, daily stats & full history</li>
+                        </ul>
+
+                        <div class="tag-row">
+                            <span class="tag-pill">Python (Flask)</span>
+                            <span class="tag-pill">HTML5</span>
+                            <span class="tag-pill">CSS3</span>
+                            <span class="tag-pill">Bootstrap 5</span>
+                            <span class="tag-pill">REST APIs</span>
+                            <span class="tag-pill">QR Code Integration</span>
+                        </div>
+
+                        <p class="landing-meta">
+                            Perfect project to highlight in resume/interview:
+                            security, real-time systems, REST APIs, QR automation & role-based UI.
+                        </p>
+                        <p class="landing-cta-note">
+                            🔐 Upar top-right pe cursor le jao → role select karo → login karke
+                            <b>GateSecure Pro dashboard</b> dekh sakte ho.
+                        </p>
+
+                        <!-- Guest Gate Pass lookup (Visitor Check – as it is) -->
+                        <div class="visitor-pass-card">
+                            <div class="visitor-pass-title">Already have a Gate Pass ID?</div>
+                            <div class="visitor-pass-desc">
+                                Apna Gate Pass ID daalo, QR aur basic details dekho, aur guard ko ye screen dikhao.
                             </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="section-card">
-                                <div class="section-header mb-2">
-                                    <div>
-                                        <div class="section-title">Today’s Visitors</div>
-                                        <div class="section-sub">All visitors created today.</div>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('today')">
-                                        Refresh
-                                    </button>
-                                </div>
-                                <div class="table-responsive" style="max-height:320px; overflow:auto;">
-                                    <table class="table table-sm table-bordered align-middle">
-                                        <thead class="table-light">
-                                        <tr>
-                                            <th>Pass ID</th>
-                                            <th>Name</th>
-                                            <th>Status</th>
-                                            <th>Created</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="todayTableBody"></tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RECEPTION TAB -->
-                <div id="tab-reception" class="tab-pane-custom d-none" data-roles="admin,reception">
-                    <div class="row g-3">
-                        <div class="col-lg-5">
-                            <div class="section-card">
-                                <div class="section-header mb-2">
-                                    <div class="section-title">New Visitor Registration (Reception)</div>
-                                </div>
-                                <form id="visitorForm">
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Visitor Name</label>
-                                        <input type="text" id="vName" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Phone</label>
-                                        <input type="text" id="vPhone" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Whom to Meet</label>
-                                        <input type="text" id="vToMeet" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Department</label>
-                                        <input type="text" id="vDept" class="form-control form-control-sm">
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Purpose</label>
-                                        <input type="text" id="vPurpose" class="form-control form-control-sm">
-                                    </div>
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Vehicle No.</label>
-                                        <input type="text" id="vVehicle" class="form-control form-control-sm">
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-2" type="submit">
-                                        Register & Generate Gate Pass
-                                    </button>
-                                </form>
-
-                                <!-- QR Preview -->
-                                <div id="qrBox" class="text-center mt-3 d-none">
-                                    <h6>Gate Pass QR</h6>
-                                    <img id="qrImage"
-                                         style="width:180px; height:180px; border:2px solid #4b5563; padding:10px; border-radius:12px;">
-                                    <p class="mt-2 mb-0" style="font-size:0.85rem;">
-                                        Pass ID: <b id="qrPassId"></b>
-                                    </p>
-                                    <small class="text-muted">Guard QR scan karega ya pass ID se entry karega.</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="section-card">
-                                <div class="section-header mb-2">
-                                    <div class="section-title">Recently Registered Visitors</div>
-                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('expected')">
-                                        Refresh
-                                    </button>
-                                </div>
-                                <div class="table-responsive" style="max-height:380px; overflow:auto;">
-                                    <table class="table table-sm table-bordered align-middle">
-                                        <thead class="table-light">
-                                        <tr>
-                                            <th>Pass ID</th>
-                                            <th>Name</th>
-                                            <th>To Meet</th>
-                                            <th>Dept</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="expectedTableBody"></tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GUARD TAB -->
-                <div id="tab-guard" class="tab-pane-custom d-none" data-roles="admin,guard">
-                    <div class="row g-3">
-                        <div class="col-lg-5">
-                            <div class="section-card">
-                                <div class="section-header mb-2">
-                                    <div class="section-title">Security Guard Panel</div>
-                                </div>
-                                <form onsubmit="event.preventDefault();">
-                                    <div class="mb-2">
-                                        <label class="form-label-sm">Pass ID (Manual)</label>
-                                        <input type="text" id="guardPassId" class="form-control form-control-sm"
-                                               placeholder="e.g. GATE-2025-0001">
-                                    </div>
-                                    <div class="d-flex gap-2 mt-2">
-                                        <button class="btn btn-primary w-50" type="button" onclick="guardCheckIn()">
-                                            Mark Check-In
-                                        </button>
-                                        <button class="btn btn-outline-secondary w-50" type="button" onclick="guardCheckOut()">
-                                            Mark Check-Out
-                                        </button>
-                                    </div>
-                                </form>
-
-                                <hr class="border-secondary">
-
-                                <div class="mb-2">
-                                    <label class="form-label-sm">QR Scanner (Camera)</label>
-                                </div>
-                                <div class="d-grid gap-2 mb-2">
-                                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="startQrScanner()">
-                                        Start QR Scanner
-                                    </button>
-                                </div>
-                                <div id="qrReader" style="width:100%; max-width:320px;"></div>
-
-                                <!-- NEW: QR upload option for guard -->
-                                <div class="mt-3">
-                                    <label class="form-label-sm">Upload QR Image</label>
-                                    <input type="file" id="qrFileInput" accept="image/*"
-                                           class="form-control form-control-sm"
-                                           onchange="scanQrFromFile(event)">
-                                    <small class="text-muted" style="font-size:0.75rem;">
-                                        Gallery se QR ki photo select karein. System QR read karke
-                                        automatic check-in / check-out karega.
-                                    </small>
-                                </div>
-
-                                <div class="mt-2 small text-muted">
-                                    Reception ya visitor khud gate-pass ID/QR generate karega.
-                                    Guard QR scan kare (camera ya upload) to system automatic
-                                    check-in / check-out toggle karega.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="section-card">
-                                <div class="section-header mb-2">
-                                    <div class="section-title">Inside Visitors (Guard View)</div>
-                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsTable('in')">
-                                        Refresh
-                                    </button>
-                                </div>
-                                <div class="table-responsive" style="max-height:380px; overflow:auto;">
-                                    <table class="table table-sm table-bordered align-middle">
-                                        <thead class="table-light">
-                                        <tr>
-                                            <th>Pass ID</th>
-                                            <th>Name</th>
-                                            <th>To Meet</th>
-                                            <th>Dept</th>
-                                            <th>In Time</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="guardInsideTableBody"></tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VISITORS TAB (Admin / Reception) -->
-                <div id="tab-visitors" class="tab-pane-custom d-none" data-roles="admin,reception">
-                    <div class="section-card">
-                        <div class="section-header mb-2">
-                            <div class="section-title">All Visitors (Admin / Reporting)</div>
-                            <div class="d-flex gap-2">
-                                <select id="filterStatus" class="form-select form-select-sm" style="width:auto;">
-                                    <option value="all">All</option>
-                                    <option value="expected">Expected</option>
-                                    <option value="in">Inside</option>
-                                    <option value="out">Completed</option>
-                                </select>
-                                <input type="text" id="searchBox" class="form-control form-control-sm search-input"
-                                       placeholder="Search name/phone/pass">
-                                <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsAdmin()">
-                                    Refresh
+                            <div class="visitor-pass-row">
+                                <input id="visitorPassInput" class="visitor-pass-input" autocomplete="off"
+                                    placeholder="e.g. GATE-2025-0003">
+                                <button class="visitor-pass-btn" type="button" onclick="fetchVisitorPass()">
+                                    View Pass
                                 </button>
                             </div>
+                            <div id="visitorPassResult" class="vp-result"></div>
                         </div>
-                        <div class="table-responsive" style="max-height:420px; overflow:auto;">
-                            <table class="table table-sm table-bordered align-middle">
-                                <thead class="table-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Pass ID</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>To Meet</th>
-                                    <th>Dept</th>
-                                    <th>Status</th>
-                                    <th>Created</th>
-                                    <th>In</th>
-                                    <th>Out</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody id="adminTableBody"></tbody>
-                            </table>
+
+                        <!-- NEW: Self registration – Get Gate Pass ID from landing itself -->
+                        <div class="visitor-pass-card">
+                            <div class="visitor-pass-title">Don’t have a Gate Pass ID?</div>
+                            <div class="visitor-pass-desc">
+                                Yaha se aap khud details fill karke <b>Gate Pass ID + QR</b> le sakte ho.
+                                Ye record reception/admin/guard panel me bhi automatically chala jayega.
+                            </div>
+
+                            <form id="selfRegisterForm" autocomplete="off" onsubmit="selfRegisterVisitor(event)">
+                                <div class="visitor-self-field">
+                                    <input id="selfName" class="visitor-pass-input" autocomplete="off"
+                                        placeholder="Visitor Name *">
+                                </div>
+                                <div class="visitor-self-field">
+                                    <input id="selfPhone" class="visitor-pass-input" autocomplete="off"
+                                        placeholder="Phone *">
+                                </div>
+                                <div class="visitor-self-field">
+                                    <input id="selfToMeet" class="visitor-pass-input" autocomplete="off"
+                                        placeholder="Whom to Meet * (Person name)">
+                                </div>
+                                <div class="visitor-self-field">
+                                    <input id="selfDept" class="visitor-pass-input" autocomplete="off"
+                                        placeholder="Department (optional)">
+                                </div>
+                                <div class="visitor-self-field">
+                                    <input id="selfPurpose" class="visitor-pass-input" autocomplete="off"
+                                        placeholder="Purpose (optional)">
+                                </div>
+                                <div class="visitor-self-field">
+                                    <input id="selfVehicle" class="visitor-pass-input" autocomplete="off"
+                                        placeholder="Vehicle No. (optional)">
+                                </div>
+
+                                <button class="visitor-pass-btn w-100 mt-2" type="submit">
+                                    Get New Gate Pass ID
+                                </button>
+                            </form>
+
+                            <div id="selfRegisterResult" class="vp-result"></div>
+                        </div>
+                    </div>
+
+                    <div class="landing-right">
+                        <div class="hero-monitor">
+                            <div class="hero-glow"></div>
+                            <div class="hero-monitor-top">
+                                <div>
+                                    <div style="font-size:0.75rem; color:#9ca3af;">Gate Monitor · Live</div>
+                                    <div class="hero-monitor-title">Campus Main Gate – GateSecure Pro</div>
+                                </div>
+                                <span class="hero-chip">QR Gate-Pass Active</span>
+                            </div>
+
+                            <div class="hero-mini-stats">
+                                <div>
+                                    <span style="color:#9ca3af;">Inside Now</span>
+                                    <strong>18</strong>
+                                </div>
+                                <div>
+                                    <span style="color:#9ca3af;">Today’s Visitors</span>
+                                    <strong>72</strong>
+                                </div>
+                                <div>
+                                    <span style="color:#9ca3af;">Avg Stay</span>
+                                    <strong>19 min</strong>
+                                </div>
+                            </div>
+
+                            <div class="hero-divider"></div>
+
+                            <div class="hero-rows">
+                                <div class="hero-row">
+                                    <span>Gate Pass #GATE-2025-0072</span>
+                                    <span class="hero-tag-inline">Inside · QR Verified</span>
+                                </div>
+                                <div class="hero-row">
+                                    <span>Reception → New visitor registered</span>
+                                    <span style="color:#a5b4fc;">QR generated</span>
+                                </div>
+                                <div class="hero-row">
+                                    <span>Guard → QR scan at entry</span>
+                                    <span style="color:#6ee7b7;">Check-in logged</span>
+                                </div>
+                                <div class="hero-row">
+                                    <span>Admin → Dashboard updated</span>
+                                    <span style="color:#fbbf24;">Live analytics</span>
+                                </div>
+                            </div>
+
+                            <div class="hero-bottom-strip">
+                                <span>Role-based control: <span class="accent">Admin · Reception · Guard</span></span>
+                                <span style="font-size:0.7rem;">Powered by Flask + QR Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ================= LOGIN POPUP ===================== -->
+    <div id="loginOverlay" class="login-overlay d-none">
+        <div class="login-backdrop"></div>
+        <div class="login-card">
+            <div class="login-top-strip"></div>
+            <div class="login-close" id="loginClose">&times;</div>
+            <div class="login-inner">
+                <div class="login-role-chip">
+                    <span>🔐 Logging in as</span>
+                    <span id="loginRoleLabel">User</span>
+                </div>
+                <div class="login-title mb-1">Welcome to GateSecure Pro</div>
+                <div class="login-sub mb-2">Enter your user ID & password to open your panel.</div>
+
+                <form id="loginForm" autocomplete="off">
+                    <div class="mb-2">
+                        <label class="form-label-sm">User ID</label>
+                        <input type="text" id="loginId" class="form-control form-control-sm" autocomplete="off"
+                            required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label-sm">Password</label>
+                        <input type="password" id="loginPassword" class="form-control form-control-sm"
+                            autocomplete="new-password" required>
+                    </div>
+                    <button class="btn btn-primary w-100 mt-2" type="submit">
+                        Login
+                    </button>
+                    <div class="mt-3 text-muted" style="font-size:0.75rem;">
+                        Demo IDs:
+                        <ul class="mb-0">
+                            <li>Admin → <b>admin1 / admin123</b></li>
+                            <li>Reception → <b>reception1 / recept123</b></li>
+                            <li>Guard → <b>guard1 / guard123</b></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= APP SCREEN (AFTER LOGIN) ================= -->
+    <div id="appScreen" class="d-none">
+        <div class="layout">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    GateSecure<span> Pro</span>
+                </div>
+                <div class="sidebar-menu">
+                    <a class="sidebar-link active" data-target="tab-dashboard" data-roles="admin,reception,guard">
+                        📊 Dashboard
+                    </a>
+                    <a class="sidebar-link" data-target="tab-reception" data-roles="admin,reception">
+                        📝 Reception (New Visitor)
+                    </a>
+                    <a class="sidebar-link" data-target="tab-guard" data-roles="admin,guard">
+                        🚧 Security Guard
+                    </a>
+                    <a class="sidebar-link" data-target="tab-visitors" data-roles="admin,reception">
+                        📋 All Visitors
+                    </a>
+                </div>
+                <div class="sidebar-footer">
+                    GateSecure Pro<br>
+                    <span class="text-success">●</span> Flask · QR · Role-Based
+                </div>
+            </aside>
+
+            <!-- MAIN -->
+            <div class="main">
+                <!-- TOPBAR -->
+                <div class="topbar">
+                    <div>
+                        <div class="topbar-title">GateSecure Pro Dashboard</div>
+                        <div class="topbar-sub">Monitor visitors, QR gate-passes, and live security flow.</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-end">
+                        <div id="topUserInfo" class="small text-muted mb-1"></div>
+                        <div class="d-flex gap-2">
+                            <div class="badge bg-light text-muted">
+                                Date: <span id="todayDate"></span>
+                            </div>
+                            <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">
+                                Logout
+                            </button>
                         </div>
                     </div>
                 </div>
 
-            </div> <!-- /content -->
-        </div> <!-- /main -->
-    </div> <!-- /layout -->
-</div> <!-- /appScreen -->
+                <!-- CONTENT -->
+                <div class="content">
+                    <!-- TOP STATS -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-label">Total Visitors</div>
+                                <div id="statTotal" class="stat-value">0</div>
+                                <span class="badge bg-light text-muted stat-pill">All-time</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-label">Inside Now</div>
+                                <div id="statInside" class="stat-value">0</div>
+                                <span class="badge bg-light text-muted stat-pill">Currently inside</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-label">Expected</div>
+                                <div id="statExpected" class="stat-value">0</div>
+                                <span class="badge bg-light text-muted stat-pill">Registered, not in</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-card">
+                                <div class="stat-label">Today Visitors</div>
+                                <div id="statToday" class="stat-value">0</div>
+                                <span class="badge bg-light text-muted stat-pill">Created today</span>
+                            </div>
+                        </div>
+                    </div>
 
-<script>
-    const API_URL = "http://127.0.0.1:5000";
+                    <!-- DASHBOARD TAB -->
+                    <div id="tab-dashboard" class="tab-pane-custom" data-roles="admin,reception,guard">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <div class="section-card">
+                                    <div class="section-header mb-2">
+                                        <div>
+                                            <div class="section-title">Visitors Inside</div>
+                                            <div class="section-sub">Currently inside the premises.</div>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                            onclick="loadVisitorsTable('in')">
+                                            Refresh
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive" style="max-height:320px; overflow:auto;">
+                                        <table class="table table-sm table-bordered align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Pass ID</th>
+                                                    <th>Name</th>
+                                                    <th>To Meet</th>
+                                                    <th>Dept</th>
+                                                    <th>In Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="insideTableBody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
 
-    let currentUser = null;
-    let selectedRoleLabel = null;
-    let qrScanner = null;
+                            <div class="col-lg-6">
+                                <div class="section-card">
+                                    <div class="section-header mb-2">
+                                        <div>
+                                            <div class="section-title">Today’s Visitors</div>
+                                            <div class="section-sub">All visitors created today.</div>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                            onclick="loadVisitorsTable('today')">
+                                            Refresh
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive" style="max-height:320px; overflow:auto;">
+                                        <table class="table table-sm table-bordered align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Pass ID</th>
+                                                    <th>Name</th>
+                                                    <th>Status</th>
+                                                    <th>Created</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="todayTableBody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    const landingScreen = document.getElementById("landingScreen");
-    const appScreen = document.getElementById("appScreen");
-    const loginOverlay = document.getElementById("loginOverlay");
-    const loginClose = document.getElementById("loginClose");
-    const loginForm = document.getElementById("loginForm");
-    const topUserInfo = document.getElementById("topUserInfo");
-    const logoutBtn = document.getElementById("logoutBtn");
+                    <!-- RECEPTION TAB -->
+                    <div id="tab-reception" class="tab-pane-custom d-none" data-roles="admin,reception">
+                        <div class="row g-3">
+                            <div class="col-lg-5">
+                                <div class="section-card">
+                                    <div class="section-header mb-2">
+                                        <div class="section-title">New Visitor Registration (Reception)</div>
+                                    </div>
+                                    <form id="visitorForm" autocomplete="off">
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Visitor Name</label>
+                                            <input type="text" id="vName" class="form-control form-control-sm"
+                                                autocomplete="off" required>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Phone</label>
+                                            <input type="text" id="vPhone" class="form-control form-control-sm"
+                                                autocomplete="off" required>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Whom to Meet</label>
+                                            <input type="text" id="vToMeet" class="form-control form-control-sm"
+                                                autocomplete="off" required>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Department</label>
+                                            <input type="text" id="vDept" class="form-control form-control-sm"
+                                                autocomplete="off">
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Purpose</label>
+                                            <input type="text" id="vPurpose" class="form-control form-control-sm"
+                                                autocomplete="off">
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Vehicle No.</label>
+                                            <input type="text" id="vVehicle" class="form-control form-control-sm"
+                                                autocomplete="off">
+                                        </div>
+                                        <button class="btn btn-primary w-100 mt-2" type="submit">
+                                            Register & Generate Gate Pass
+                                        </button>
+                                    </form>
 
-    const insideTableBody = document.getElementById("insideTableBody");
-    const todayTableBody = document.getElementById("todayTableBody");
-    const expectedTableBody = document.getElementById("expectedTableBody");
-    const guardInsideTableBody = document.getElementById("guardInsideTableBody");
-    const adminTableBody = document.getElementById("adminTableBody");
+                                    <!-- QR Preview -->
+                                    <div id="qrBox" class="text-center mt-3 d-none">
+                                        <h6>Gate Pass QR</h6>
+                                        <img id="qrImage"
+                                            style="width:180px; height:180px; border:2px solid #4b5563; padding:10px; border-radius:12px;">
+                                        <p class="mt-2 mb-0" style="font-size:0.85rem;">
+                                            Pass ID: <b id="qrPassId"></b>
+                                        </p>
+                                        <small class="text-muted">Guard QR scan karega ya pass ID se entry
+                                            karega.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="section-card">
+                                    <div class="section-header mb-2">
+                                        <div class="section-title">Recently Registered Visitors</div>
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                            onclick="loadVisitorsTable('expected')">
+                                            Refresh
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive" style="max-height:380px; overflow:auto;">
+                                        <table class="table table-sm table-bordered align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Pass ID</th>
+                                                    <th>Name</th>
+                                                    <th>To Meet</th>
+                                                    <th>Dept</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="expectedTableBody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    const statTotal = document.getElementById("statTotal");
-    const statInside = document.getElementById("statInside");
-    const statExpected = document.getElementById("statExpected");
-    const statToday = document.getElementById("statToday");
+                    <!-- GUARD TAB -->
+                    <div id="tab-guard" class="tab-pane-custom d-none" data-roles="admin,guard">
+                        <div class="row g-3">
+                            <div class="col-lg-5">
+                                <div class="section-card">
+                                    <div class="section-header mb-2">
+                                        <div class="section-title">Security Guard Panel</div>
+                                    </div>
+                                    <form onsubmit="event.preventDefault();" autocomplete="off">
+                                        <div class="mb-2">
+                                            <label class="form-label-sm">Pass ID (Manual)</label>
+                                            <input type="text" id="guardPassId" class="form-control form-control-sm"
+                                                autocomplete="off" placeholder="e.g. GATE-2025-0001">
+                                        </div>
+                                        <div class="d-flex gap-2 mt-2">
+                                            <button class="btn btn-primary w-50" type="button" onclick="guardCheckIn()">
+                                                Mark Check-In
+                                            </button>
+                                            <button class="btn btn-outline-secondary w-50" type="button"
+                                                onclick="guardCheckOut()">
+                                                Mark Check-Out
+                                            </button>
+                                        </div>
 
-    const filterStatus = document.getElementById("filterStatus");
-    const searchBox = document.getElementById("searchBox");
+                                    </form>
 
-    document.getElementById("todayDate").textContent = new Date().toLocaleDateString();
 
-    const sidebarLinks = document.querySelectorAll(".sidebar-link");
-    const tabPanes = document.querySelectorAll(".tab-pane-custom");
+                                    <hr class="border-secondary">
 
-    // Self registration result
-    const selfRegisterResult = document.getElementById("selfRegisterResult");
+                                    <div class="mb-2">
+                                        <label class="form-label-sm">QR Scanner (Camera)</label>
+                                    </div>
+                                    <div class="d-grid gap-2 mb-2">
+                                        <button class="btn btn-sm btn-outline-secondary" type="button"
+                                            onclick="startQrScanner()">
+                                            Start QR Scanner
+                                        </button>
+                                    </div>
+                                    <div id="qrReader" style="width:100%; max-width:320px;"></div>
 
-    // ===== Guest Gate Pass lookup =====
-    async function fetchVisitorPass() {
-        const input = document.getElementById("visitorPassInput");
-        const resultBox = document.getElementById("visitorPassResult");
-        const passId = (input.value || "").trim();
+                                    <!-- NEW: QR upload option for guard -->
+                                    <div class="mt-3">
+                                        <label class="form-label-sm">Upload QR Image</label>
+                                        <input type="file" id="qrFileInput" accept="image/*"
+                                            class="form-control form-control-sm" onchange="scanQrFromFile(event)">
+                                        <small class="text-muted" style="font-size:0.75rem;">
+                                            Gallery se QR ki photo select karein. System QR read karke
+                                            automatic check-in / check-out karega.
+                                        </small>
+                                    </div>
 
-        if (!passId) {
-            alert("Please enter your Gate Pass ID.");
-            return;
-        }
+                                    <div class="mt-2 small text-muted">
+                                        Reception ya visitor khud gate-pass ID/QR generate karega.
+                                        Guard QR scan kare (camera ya upload) to system automatic
+                                        check-in / check-out toggle karega.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="section-card">
+                                    <div class="section-header mb-2">
+                                        <div class="section-title">Inside Visitors (Guard View)</div>
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                            onclick="loadVisitorsTable('in')">
+                                            Refresh
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive" style="max-height:380px; overflow:auto;">
+                                        <table class="table table-sm table-bordered align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Pass ID</th>
+                                                    <th>Name</th>
+                                                    <th>To Meet</th>
+                                                    <th>Dept</th>
+                                                    <th>In Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="guardInsideTableBody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        resultBox.innerHTML = `<div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Loading gate pass...</div>`;
+                    <!-- VISITORS TAB (Admin / Reception) -->
+                    <div id="tab-visitors" class="tab-pane-custom d-none" data-roles="admin,reception">
+                        <div class="section-card">
+                            <div class="section-header mb-2">
+                                <div class="section-title">All Visitors (Admin / Reporting)</div>
+                                <div class="d-flex gap-2">
+                                    <select id="filterStatus" class="form-select form-select-sm" style="width:auto;">
+                                        <option value="all">All</option>
+                                        <option value="expected">Expected</option>
+                                        <option value="in">Inside</option>
+                                        <option value="out">Completed</option>
+                                    </select>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm search-input"
+                                        autocomplete="off" placeholder="Search name/phone/pass">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="loadVisitorsAdmin()">
+                                        Refresh
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive" style="max-height:420px; overflow:auto;">
+                                <table class="table table-sm table-bordered align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Pass ID</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>To Meet</th>
+                                            <th>Dept</th>
+                                            <th>Status</th>
+                                            <th>Created</th>
+                                            <th>In</th>
+                                            <th>Out</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminTableBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-        try {
-            const res = await fetch(`${API_URL}/visitors/pass/${encodeURIComponent(passId)}`);
-            const data = await res.json();
+                </div> <!-- /content -->
+            </div> <!-- /main -->
+        </div> <!-- /layout -->
+    </div> <!-- /appScreen -->
 
-            if (!res.ok || data.status !== "success") {
-                resultBox.innerHTML =
-                    `<div style="font-size:0.8rem;color:#fca5a5;margin-top:6px;">${data.message || "Invalid Gate Pass ID"}</div>`;
+    <script>
+        const API_URL = "http://127.0.0.1:5000";
+
+        let currentUser = null;
+        let selectedRoleLabel = null;
+        let qrScanner = null;
+
+        const landingScreen = document.getElementById("landingScreen");
+        const appScreen = document.getElementById("appScreen");
+        const loginOverlay = document.getElementById("loginOverlay");
+        const loginClose = document.getElementById("loginClose");
+        const loginForm = document.getElementById("loginForm");
+        const topUserInfo = document.getElementById("topUserInfo");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        const insideTableBody = document.getElementById("insideTableBody");
+        const todayTableBody = document.getElementById("todayTableBody");
+        const expectedTableBody = document.getElementById("expectedTableBody");
+        const guardInsideTableBody = document.getElementById("guardInsideTableBody");
+        const adminTableBody = document.getElementById("adminTableBody");
+
+        const statTotal = document.getElementById("statTotal");
+        const statInside = document.getElementById("statInside");
+        const statExpected = document.getElementById("statExpected");
+        const statToday = document.getElementById("statToday");
+
+        const filterStatus = document.getElementById("filterStatus");
+        const searchBox = document.getElementById("searchBox");
+
+        document.getElementById("todayDate").textContent = new Date().toLocaleDateString();
+
+        const sidebarLinks = document.querySelectorAll(".sidebar-link");
+        const tabPanes = document.querySelectorAll(".tab-pane-custom");
+
+        // Self registration result
+        const selfRegisterResult = document.getElementById("selfRegisterResult");
+
+        // ===== Guest Gate Pass lookup =====
+        async function fetchVisitorPass() {
+            const input = document.getElementById("visitorPassInput");
+            const resultBox = document.getElementById("visitorPassResult");
+            const passId = (input.value || "").trim();
+
+            if (!passId) {
+                alert("Please enter your Gate Pass ID.");
                 return;
             }
 
-            const v = data.visitor;
-            const badgeClass =
-                v.status === "in" ? "status-in" :
-                v.status === "out" ? "status-out" : "status-expected";
+            resultBox.innerHTML = `<div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Loading gate pass...</div>`;
 
-            resultBox.innerHTML = `
+            try {
+                const res = await fetch(`${API_URL}/visitors/pass/${encodeURIComponent(passId)}`);
+                const data = await res.json();
+
+                if (!res.ok || data.status !== "success") {
+                    resultBox.innerHTML =
+                        `<div style="font-size:0.8rem;color:#fca5a5;margin-top:6px;">${data.message || "Invalid Gate Pass ID"}</div>`;
+                    return;
+                }
+
+                const v = data.visitor;
+                const badgeClass =
+                    v.status === "in" ? "status-in" :
+                        v.status === "out" ? "status-out" : "status-expected";
+
+                resultBox.innerHTML = `
                 <div class="vp-result-card">
                     <div class="d-flex gap-3 align-items-start">
                         <div class="vp-qr-box">
@@ -1554,76 +1703,76 @@
                     </div>
                 </div>
             `;
-        } catch (err) {
-            console.error(err);
-            alert("Error connecting to server (gate pass lookup).");
-            resultBox.innerHTML = "";
-        }
-    }
-
-    // Enter key support on gate pass input
-    const visitorPassInput = document.getElementById("visitorPassInput");
-    if (visitorPassInput) {
-        visitorPassInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-                fetchVisitorPass();
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to server (gate pass lookup).");
+                resultBox.innerHTML = "";
             }
-        });
-    }
-
-    // ===== NEW: Self registration from landing page =====
-    async function selfRegisterVisitor(ev) {
-        ev.preventDefault();
-
-        const name = (document.getElementById("selfName").value || "").trim();
-        const phone = (document.getElementById("selfPhone").value || "").trim();
-        const to_meet = (document.getElementById("selfToMeet").value || "").trim();
-        const department = (document.getElementById("selfDept").value || "").trim();
-        const purpose = (document.getElementById("selfPurpose").value || "").trim();
-        const vehicle_no = (document.getElementById("selfVehicle").value || "").trim();
-
-        if (!name || !phone || !to_meet) {
-            alert("Name, phone aur whom to meet required hai.");
-            return;
         }
 
-        selfRegisterResult.innerHTML =
-            `<div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Creating gate pass...</div>`;
-
-        try {
-            const res = await fetch(`${API_URL}/visitors`, {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    name, phone, to_meet, department, purpose, vehicle_no
-                })
+        // Enter key support on gate pass input
+        const visitorPassInput = document.getElementById("visitorPassInput");
+        if (visitorPassInput) {
+            visitorPassInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    fetchVisitorPass();
+                }
             });
+        }
 
-            const data = await res.json();
+        // ===== NEW: Self registration from landing page =====
+        async function selfRegisterVisitor(ev) {
+            ev.preventDefault();
 
-            if (!res.ok || data.status !== "success") {
-                alert(data.message || "Error while creating gate pass.");
-                selfRegisterResult.innerHTML = "";
+            const name = (document.getElementById("selfName").value || "").trim();
+            const phone = (document.getElementById("selfPhone").value || "").trim();
+            const to_meet = (document.getElementById("selfToMeet").value || "").trim();
+            const department = (document.getElementById("selfDept").value || "").trim();
+            const purpose = (document.getElementById("selfPurpose").value || "").trim();
+            const vehicle_no = (document.getElementById("selfVehicle").value || "").trim();
+
+            if (!name || !phone || !to_meet) {
+                alert("Name, phone aur whom to meet required hai.");
                 return;
             }
 
-            const v = data.visitor;
-            alert(`Gate Pass Created.\nPass ID: ${v.pass_id}`);
+            selfRegisterResult.innerHTML =
+                `<div style="font-size:0.78rem;color:#9ca3af;margin-top:6px;">Creating gate pass...</div>`;
 
-            // form clear
-            document.getElementById("selfRegisterForm").reset();
+            try {
+                const res = await fetch(`${API_URL}/visitors`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name, phone, to_meet, department, purpose, vehicle_no
+                    })
+                });
 
-            // Visitor check input me bhi ID daal diye
-            if (visitorPassInput) {
-                visitorPassInput.value = v.pass_id;
-            }
+                const data = await res.json();
 
-            const badgeClass =
-                v.status === "in" ? "status-in" :
-                v.status === "out" ? "status-out" : "status-expected";
+                if (!res.ok || data.status !== "success") {
+                    alert(data.message || "Error while creating gate pass.");
+                    selfRegisterResult.innerHTML = "";
+                    return;
+                }
 
-            selfRegisterResult.innerHTML = `
+                const v = data.visitor;
+                alert(`Gate Pass Created.\nPass ID: ${v.pass_id}`);
+
+                // form clear
+                document.getElementById("selfRegisterForm").reset();
+
+                // Visitor check input me bhi ID daal diye
+                if (visitorPassInput) {
+                    visitorPassInput.value = v.pass_id;
+                }
+
+                const badgeClass =
+                    v.status === "in" ? "status-in" :
+                        v.status === "out" ? "status-out" : "status-expected";
+
+                selfRegisterResult.innerHTML = `
                 <div class="vp-result-card">
                     <div class="d-flex gap-3 align-items-start">
                         <div class="vp-qr-box">
@@ -1646,457 +1795,458 @@
                     </div>
                 </div>
             `;
-        } catch (err) {
-            console.error(err);
-            alert("Error connecting to server (self registration).");
-            selfRegisterResult.innerHTML = "";
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to server (self registration).");
+                selfRegisterResult.innerHTML = "";
+            }
         }
-    }
 
-    // ===== Landing role dropdown click =====
-    document.querySelectorAll(".role-option").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const r = btn.dataset.role;
-            selectedRoleLabel = r;
-            const text =
-                r === "admin" ? "Admin" :
-                r === "reception" ? "Reception" :
-                "Security Guard";
-            document.getElementById("loginRoleLabel").textContent = text;
-            loginOverlay.classList.remove("d-none");
+        // ===== Landing role dropdown click =====
+        document.querySelectorAll(".role-option").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const r = btn.dataset.role;
+                selectedRoleLabel = r;
+                const text =
+                    r === "admin" ? "Admin" :
+                        r === "reception" ? "Reception" :
+                            "Security Guard";
+                document.getElementById("loginRoleLabel").textContent = text;
+                loginOverlay.classList.remove("d-none");
+            });
         });
-    });
 
-    loginClose.addEventListener("click", () => {
-        loginOverlay.classList.add("d-none");
-    });
+        loginClose.addEventListener("click", () => {
+            loginOverlay.classList.add("d-none");
+        });
 
-    // ===== Role-based UI =====
-    function applyRoleUI() {
-        const role = currentUser ? currentUser.role : null;
+        // ===== Role-based UI =====
+        function applyRoleUI() {
+            const role = currentUser ? currentUser.role : null;
 
-        document.querySelectorAll("[data-roles]").forEach(el => {
-            const roles = (el.dataset.roles || "").split(",").map(r => r.trim());
-            if (!role || !roles.includes(role)) {
-                el.classList.add("d-none");
+            document.querySelectorAll("[data-roles]").forEach(el => {
+                const roles = (el.dataset.roles || "").split(",").map(r => r.trim());
+                if (!role || !roles.includes(role)) {
+                    el.classList.add("d-none");
+                } else {
+                    el.classList.remove("d-none");
+                }
+            });
+
+            if (role) {
+                const label =
+                    role === "admin" ? "Admin" :
+                        role === "reception" ? "Reception" :
+                            "Security Guard";
+                topUserInfo.textContent = `${label}: ${currentUser.name}`;
             } else {
-                el.classList.remove("d-none");
+                topUserInfo.textContent = "";
             }
-        });
 
-        if (role) {
-            const label =
-                role === "admin" ? "Admin" :
-                role === "reception" ? "Reception" :
-                "Security Guard";
-            topUserInfo.textContent = `${label}: ${currentUser.name}`;
-        } else {
-            topUserInfo.textContent = "";
+            if (role) {
+                setDefaultTabForRole(role);
+            }
         }
 
-        if (role) {
-            setDefaultTabForRole(role);
-        }
-    }
+        function setDefaultTabForRole(role) {
+            let firstLink = null;
+            sidebarLinks.forEach(link => {
+                const roles = (link.dataset.roles || "").split(",").map(r => r.trim());
+                if (roles.includes(role) && !firstLink) {
+                    firstLink = link;
+                }
+            });
 
-    function setDefaultTabForRole(role) {
-        let firstLink = null;
-        sidebarLinks.forEach(link => {
-            const roles = (link.dataset.roles || "").split(",").map(r => r.trim());
-            if (roles.includes(role) && !firstLink) {
-                firstLink = link;
-            }
-        });
-
-        if (!firstLink) return;
-
-        sidebarLinks.forEach(l => l.classList.remove("active"));
-        firstLink.classList.add("active");
-
-        const targetId = firstLink.getAttribute("data-target");
-
-        tabPanes.forEach(pane => {
-            const roles = (pane.dataset.roles || "").split(",").map(r => r.trim());
-            if (pane.id === targetId && roles.includes(role)) {
-                pane.classList.remove("d-none");
-            } else {
-                pane.classList.add("d-none");
-            }
-        });
-    }
-
-    // Sidebar tab switch
-    sidebarLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (!currentUser) return;
-            const roles = (link.dataset.roles || "").split(",").map(r => r.trim());
-            if (!roles.includes(currentUser.role)) return;
+            if (!firstLink) return;
 
             sidebarLinks.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
+            firstLink.classList.add("active");
 
-            const target = link.getAttribute("data-target");
+            const targetId = firstLink.getAttribute("data-target");
+
             tabPanes.forEach(pane => {
-                const paneRoles = (pane.dataset.roles || "").split(",").map(r => r.trim());
-                if (pane.id === target && paneRoles.includes(currentUser.role)) {
+                const roles = (pane.dataset.roles || "").split(",").map(r => r.trim());
+                if (pane.id === targetId && roles.includes(role)) {
                     pane.classList.remove("d-none");
                 } else {
                     pane.classList.add("d-none");
                 }
             });
-        });
-    });
+        }
 
-    // ===== Login =====
-    if (loginForm) {
-        loginForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
+        // Sidebar tab switch
+        sidebarLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (!currentUser) return;
+                const roles = (link.dataset.roles || "").split(",").map(r => r.trim());
+                if (!roles.includes(currentUser.role)) return;
 
-            const id = document.getElementById("loginId").value.trim();
-            const password = document.getElementById("loginPassword").value.trim();
+                sidebarLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
 
-            if (!id || !password) {
-                alert("Please fill ID and password.");
-                return;
-            }
-
-            try {
-                const res = await fetch(`${API_URL}/auth/login`, {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({id, password})
+                const target = link.getAttribute("data-target");
+                tabPanes.forEach(pane => {
+                    const paneRoles = (pane.dataset.roles || "").split(",").map(r => r.trim());
+                    if (pane.id === target && paneRoles.includes(currentUser.role)) {
+                        pane.classList.remove("d-none");
+                    } else {
+                        pane.classList.add("d-none");
+                    }
                 });
+            });
+        });
 
-                const data = await res.json();
+        // ===== Login =====
+        if (loginForm) {
+            loginForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-                if (!res.ok || data.status !== "success") {
-                    alert(data.message || "Login failed.");
+                const id = document.getElementById("loginId").value.trim();
+                const password = document.getElementById("loginPassword").value.trim();
+
+                if (!id || !password) {
+                    alert("Please fill ID and password.");
                     return;
                 }
 
-                currentUser = {
-                    id: data.id,
-                    name: data.name,
-                    role: data.role
+                try {
+                    const res = await fetch(`${API_URL}/auth/login`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id, password })
+                    });
+
+                    const data = await res.json();
+
+                    if (!res.ok || data.status !== "success") {
+                        alert(data.message || "Login failed.");
+                        return;
+                    }
+
+                    currentUser = {
+                        id: data.id,
+                        name: data.name,
+                        role: data.role
+                    };
+
+                    if (selectedRoleLabel && selectedRoleLabel !== data.role) {
+                        alert(`You logged in as ${data.role}, not ${selectedRoleLabel}.`);
+                    }
+
+                    localStorage.setItem("gateSecureUser", JSON.stringify(currentUser));
+
+                    landingScreen.classList.add("d-none");
+                    appScreen.classList.remove("d-none");
+                    loginOverlay.classList.add("d-none");
+
+                    applyRoleUI();
+                    await initialLoad();
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Error connecting to server (login).");
+                }
+            });
+        }
+
+        // ===== Logout =====
+        logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem("gateSecureUser");
+            currentUser = null;
+            appScreen.classList.add("d-none");
+            landingScreen.classList.remove("d-none");
+        });
+
+        // ===== Init user from localStorage =====
+        (function initUser() {
+            const saved = localStorage.getItem("gateSecureUser");
+            if (!saved) {
+                landingScreen.classList.remove("d-none");
+                appScreen.classList.add("d-none");
+                return;
+            }
+            try {
+                currentUser = JSON.parse(saved);
+            } catch (e) {
+                localStorage.removeItem("gateSecureUser");
+                landingScreen.classList.remove("d-none");
+                appScreen.classList.add("d-none");
+                return;
+            }
+
+            landingScreen.classList.add("d-none");
+            appScreen.classList.remove("d-none");
+            applyRoleUI();
+            initialLoad();
+        })();
+
+        // ===== Stats =====
+        async function loadStats() {
+            try {
+                const res = await fetch(`${API_URL}/stats`);
+                const data = await res.json();
+                statTotal.textContent = data.total;
+                statInside.textContent = data.inside_now;
+                statExpected.textContent = data.expected_now;
+                statToday.textContent = data.today;
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        // ===== Reception new visitor =====
+        const visitorForm = document.getElementById("visitorForm");
+        if (visitorForm) {
+            visitorForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const payload = {
+                    name: document.getElementById("vName").value.trim(),
+                    phone: document.getElementById("vPhone").value.trim(),
+                    to_meet: document.getElementById("vToMeet").value.trim(),
+                    department: document.getElementById("vDept").value.trim(),
+                    purpose: document.getElementById("vPurpose").value.trim(),
+                    vehicle_no: document.getElementById("vVehicle").value.trim()
                 };
 
-                if (selectedRoleLabel && selectedRoleLabel !== data.role) {
-                    alert(`You logged in as ${data.role}, not ${selectedRoleLabel}.`);
-                }
-
-                localStorage.setItem("gateSecureUser", JSON.stringify(currentUser));
-
-                landingScreen.classList.add("d-none");
-                appScreen.classList.remove("d-none");
-                loginOverlay.classList.add("d-none");
-
-                applyRoleUI();
-                await initialLoad();
-
-            } catch (err) {
-                console.error(err);
-                alert("Error connecting to server (login).");
-            }
-        });
-    }
-
-    // ===== Logout =====
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("gateSecureUser");
-        currentUser = null;
-        appScreen.classList.add("d-none");
-        landingScreen.classList.remove("d-none");
-    });
-
-    // ===== Init user from localStorage =====
-    (function initUser() {
-        const saved = localStorage.getItem("gateSecureUser");
-        if (!saved) {
-            landingScreen.classList.remove("d-none");
-            appScreen.classList.add("d-none");
-            return;
-        }
-        try {
-            currentUser = JSON.parse(saved);
-        } catch (e) {
-            localStorage.removeItem("gateSecureUser");
-            landingScreen.classList.remove("d-none");
-            appScreen.classList.add("d-none");
-            return;
-        }
-
-        landingScreen.classList.add("d-none");
-        appScreen.classList.remove("d-none");
-        applyRoleUI();
-        initialLoad();
-    })();
-
-    // ===== Stats =====
-    async function loadStats() {
-        try {
-            const res = await fetch(`${API_URL}/stats`);
-            const data = await res.json();
-            statTotal.textContent = data.total;
-            statInside.textContent = data.inside_now;
-            statExpected.textContent = data.expected_now;
-            statToday.textContent = data.today;
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
-    // ===== Reception new visitor =====
-    const visitorForm = document.getElementById("visitorForm");
-    if (visitorForm) {
-        visitorForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const payload = {
-                name: document.getElementById("vName").value.trim(),
-                phone: document.getElementById("vPhone").value.trim(),
-                to_meet: document.getElementById("vToMeet").value.trim(),
-                department: document.getElementById("vDept").value.trim(),
-                purpose: document.getElementById("vPurpose").value.trim(),
-                vehicle_no: document.getElementById("vVehicle").value.trim()
-            };
-
-            if (!payload.name || !payload.phone || !payload.to_meet) {
-                alert("Name, phone and whom to meet are required.");
-                return;
-            }
-
-            try {
-                const res = await fetch(`${API_URL}/visitors`, {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify(payload)
-                });
-
-                const data = await res.json();
-                if (!res.ok || data.status !== "success") {
-                    alert(data.message || "Error while registering visitor.");
+                if (!payload.name || !payload.phone || !payload.to_meet) {
+                    alert("Name, phone and whom to meet are required.");
                     return;
                 }
 
-                visitorForm.reset();
-                alert(`Gate Pass Generated.\nPass ID: ${data.visitor.pass_id}`);
+                try {
+                    const res = await fetch(`${API_URL}/visitors`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
 
-                document.getElementById("qrBox").classList.remove("d-none");
-                document.getElementById("qrImage").src = data.visitor.qr_image;
-                document.getElementById("qrPassId").textContent = data.visitor.pass_id;
+                    const data = await res.json();
+                    if (!res.ok || data.status !== "success") {
+                        alert(data.message || "Error while registering visitor.");
+                        return;
+                    }
 
-                await loadStats();
-                await loadVisitorsTable("expected");
-                await loadVisitorsTable("today");
-            } catch (err) {
-                console.error(err);
-                alert("Error connecting to server.");
-            }
-        });
-    }
+                    visitorForm.reset();
+                    alert(`Gate Pass Generated.\nPass ID: ${data.visitor.pass_id}`);
 
-    // ===== Tables (Dashboard / Guard / Reception) =====
-    async function loadVisitorsTable(mode) {
-        try {
-            if (mode === "in") {
-                const res = await fetch(`${API_URL}/visitors?status=in`);
-                const data = await res.json();
+                    document.getElementById("qrBox").classList.remove("d-none");
+                    document.getElementById("qrImage").src = data.visitor.qr_image;
+                    document.getElementById("qrPassId").textContent = data.visitor.pass_id;
 
-                insideTableBody.innerHTML = "";
-                guardInsideTableBody.innerHTML = "";
+                    await loadStats();
+                    await loadVisitorsTable("expected");
+                    await loadVisitorsTable("today");
+                } catch (err) {
+                    console.error(err);
+                    alert("Error connecting to server.");
+                }
+            });
+        }
 
-                data.forEach(v => {
-                    const rowHTML = `
+        // ===== Tables (Dashboard / Guard / Reception) =====
+        async function loadVisitorsTable(mode) {
+            try {
+                if (mode === "in") {
+                    const res = await fetch(`${API_URL}/visitors?status=in`);
+                    const data = await res.json();
+
+                    insideTableBody.innerHTML = "";
+                    guardInsideTableBody.innerHTML = "";
+
+                    data.forEach(v => {
+                        const rowHTML = `
                         <td>${v.pass_id}</td>
                         <td>${v.name}</td>
                         <td>${v.to_meet}</td>
                         <td>${v.department || "-"}</td>
                         <td>${v.check_in || "-"}</td>
                     `;
-                    const tr1 = document.createElement("tr");
-                    tr1.innerHTML = rowHTML;
-                    insideTableBody.appendChild(tr1);
+                        const tr1 = document.createElement("tr");
+                        tr1.innerHTML = rowHTML;
+                        insideTableBody.appendChild(tr1);
 
-                    const tr2 = document.createElement("tr");
-                    tr2.innerHTML = rowHTML;
-                    guardInsideTableBody.appendChild(tr2);
-                });
-            } else if (mode === "today") {
-                const res = await fetch(`${API_URL}/visitors?today=true`);
-                const data = await res.json();
+                        const tr2 = document.createElement("tr");
+                        tr2.innerHTML = rowHTML;
+                        guardInsideTableBody.appendChild(tr2);
+                    });
+                } else if (mode === "today") {
+                    const res = await fetch(`${API_URL}/visitors?today=true`);
+                    const data = await res.json();
 
-                todayTableBody.innerHTML = "";
-                data.forEach(v => {
-                    const badgeClass =
-                        v.status === "in" ? "status-in" :
-                        v.status === "out" ? "status-out" : "status-expected";
+                    todayTableBody.innerHTML = "";
+                    data.forEach(v => {
+                        const badgeClass =
+                            v.status === "in" ? "status-in" :
+                                v.status === "out" ? "status-out" : "status-expected";
 
-                    const rowHTML = `
+                        const rowHTML = `
                         <td>${v.pass_id}</td>
                         <td>${v.name}</td>
                         <td><span class="badge pill-badge ${badgeClass}">${v.status}</span></td>
                         <td>${v.created_at}</td>
                     `;
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = rowHTML;
-                    todayTableBody.appendChild(tr);
-                });
-            } else if (mode === "expected") {
-                const res = await fetch(`${API_URL}/visitors?status=expected`);
-                const data = await res.json();
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = rowHTML;
+                        todayTableBody.appendChild(tr);
+                    });
+                } else if (mode === "expected") {
+                    const res = await fetch(`${API_URL}/visitors?status=expected`);
+                    const data = await res.json();
 
-                expectedTableBody.innerHTML = "";
-                data.forEach(v => {
-                    const rowHTML = `
+                    expectedTableBody.innerHTML = "";
+                    data.forEach(v => {
+                        const rowHTML = `
                         <td>${v.pass_id}</td>
                         <td>${v.name}</td>
                         <td>${v.to_meet}</td>
                         <td>${v.department || "-"}</td>
                         <td><span class="badge pill-badge status-expected">expected</span></td>
                     `;
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = rowHTML;
-                    expectedTableBody.appendChild(tr);
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = rowHTML;
+                        expectedTableBody.appendChild(tr);
+                    });
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        // ===== Guard manual check-in/out =====
+        async function guardCheckIn() {
+            const pass_id = document.getElementById("guardPassId").value.trim();
+            if (!pass_id) {
+                alert("Please enter Pass ID.");
+                return;
+            }
+            try {
+                const res = await fetch(`${API_URL}/visitors/checkin`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ pass_id })
                 });
+                const data = await res.json();
+                alert(data.message || (res.ok ? "Check-in done." : "Error"));
+                await loadStats();
+                await loadVisitorsTable("in");
+                await loadVisitorsTable("today");
+            } catch (e) {
+                console.error(e);
+                alert("Error connecting to server.");
             }
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
-    // ===== Guard manual check-in/out =====
-    async function guardCheckIn() {
-        const pass_id = document.getElementById("guardPassId").value.trim();
-        if (!pass_id) {
-            alert("Please enter Pass ID.");
-            return;
-        }
-        try {
-            const res = await fetch(`${API_URL}/visitors/checkin`, {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({pass_id})
-            });
-            const data = await res.json();
-            alert(data.message || (res.ok ? "Check-in done." : "Error"));
-            await loadStats();
-            await loadVisitorsTable("in");
-            await loadVisitorsTable("today");
-        } catch (e) {
-            console.error(e);
-            alert("Error connecting to server.");
-        }
-    }
-
-    async function guardCheckOut() {
-        const pass_id = document.getElementById("guardPassId").value.trim();
-        if (!pass_id) {
-            alert("Please enter Pass ID.");
-            return;
-        }
-        try {
-            const res = await fetch(`${API_URL}/visitors/checkout`, {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({pass_id})
-            });
-            const data = await res.json();
-            alert(data.message || (res.ok ? "Check-out done." : "Error"));
-            await loadStats();
-            await loadVisitorsTable("in");
-            await loadVisitorsTable("today");
-        } catch (e) {
-            console.error(e);
-            alert("Error connecting to server.");
-        }
-    }
-
-    // ===== Common QR scan handler (camera + upload) =====
-    async function processQrScan(passIdFromQr) {
-        const pass_id = (passIdFromQr || "").trim();
-        if (!pass_id) {
-            alert("QR se valid Pass ID nahi mila.");
-            return;
         }
 
-        // Guard input me bhi autofill
-        const guardInput = document.getElementById("guardPassId");
-        if (guardInput) guardInput.value = pass_id;
-
-        try {
-            const res = await fetch(`${API_URL}/qr-scan`, {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({pass_id})
-            });
-            const data = await res.json();
-            alert(data.message || (res.ok ? "QR scan processed." : "Error processing QR."));
-            await loadStats();
-            await loadVisitorsTable("in");
-            await loadVisitorsTable("today");
-        } catch (err) {
-            console.error(err);
-            alert("Error processing QR scan.");
-        }
-    }
-
-    // ===== Guard QR Scanner (camera) =====
-    function startQrScanner() {
-        if (qrScanner) return;
-
-        function onScanSuccess(decodedText) {
-            processQrScan(decodedText);
+        async function guardCheckOut() {
+            const pass_id = document.getElementById("guardPassId").value.trim();
+            if (!pass_id) {
+                alert("Please enter Pass ID.");
+                return;
+            }
+            try {
+                const res = await fetch(`${API_URL}/visitors/checkout`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ pass_id })
+                });
+                const data = await res.json();
+                alert(data.message || (res.ok ? "Check-out done." : "Error"));
+                await loadStats();
+                await loadVisitorsTable("in");
+                await loadVisitorsTable("today");
+            } catch (e) {
+                console.error(e);
+                alert("Error connecting to server.");
+            }
         }
 
-        qrScanner = new Html5QrcodeScanner("qrReader", { fps: 10, qrbox: 250 });
-        qrScanner.render(onScanSuccess);
-    }
-
-    // ===== Guard QR upload from file =====
-    async function scanQrFromFile(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        if (!window.Html5Qrcode) {
-            alert("QR library load nahi hui. Page reload karke try karein.");
-            return;
-        }
-
-        try {
-            const html5QrCode = new Html5Qrcode("qrReader");
-            const decodedText = await html5QrCode.scanFile(file, true);
-            await html5QrCode.clear();
-            await processQrScan(decodedText);
-        } catch (err) {
-            console.error(err);
-            alert("QR read nahi hua. Clear image try karein.");
-        } finally {
-            // input ko reset kar do taaki same file dobara bhi choose kar sake
-            event.target.value = "";
-        }
-    }
-
-    // ===== Admin/Reception visitor list =====
-    async function loadVisitorsAdmin() {
-        try {
-            const status = filterStatus.value;
-            const search = (searchBox.value || "").trim();
-
-            let url = `${API_URL}/visitors?status=${encodeURIComponent(status)}`;
-            if (search) {
-                url += `&search=${encodeURIComponent(search)}`;
+        // ===== Common QR scan handler (camera + upload) =====
+        async function processQrScan(passIdFromQr) {
+            const pass_id = (passIdFromQr || "").trim();
+            if (!pass_id) {
+                alert("QR se valid Pass ID nahi mila.");
+                return;
             }
 
-            const res = await fetch(url);
-            const data = await res.json();
+            // Guard input me bhi autofill
+            const guardInput = document.getElementById("guardPassId");
+            if (guardInput) guardInput.value = pass_id;
 
-            adminTableBody.innerHTML = "";
-            data.forEach(v => {
-                const badgeClass =
-                    v.status === "in" ? "status-in" :
-                    v.status === "out" ? "status-out" : "status-expected";
+            try {
+                const res = await fetch(`${API_URL}/qr-scan`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ pass_id })
+                });
+                const data = await res.json();
+                alert(data.message || (res.ok ? "QR scan processed." : "Error processing QR."));
 
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
+                await loadStats();
+                await loadVisitorsTable("in");
+                await loadVisitorsTable("today");
+            } catch (err) {
+                console.error(err);
+                alert("Error processing QR scan.");
+            }
+        }
+
+        // ===== Guard QR Scanner (camera) =====
+        function startQrScanner() {
+            if (qrScanner) return;
+
+            function onScanSuccess(decodedText) {
+                processQrScan(decodedText);
+            }
+
+            qrScanner = new Html5QrcodeScanner("qrReader", { fps: 10, qrbox: 250 });
+            qrScanner.render(onScanSuccess);
+        }
+
+        // ===== Guard QR upload from file =====
+        async function scanQrFromFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!window.Html5Qrcode) {
+                alert("QR library load nahi hui. Page reload karke try karein.");
+                return;
+            }
+
+            try {
+                const html5QrCode = new Html5Qrcode("qrReader");
+                const decodedText = await html5QrCode.scanFile(file, true);
+                await html5QrCode.clear();
+                await processQrScan(decodedText);
+            } catch (err) {
+                console.error(err);
+                alert("QR read nahi hua. Clear image try karein.");
+            } finally {
+                // input ko reset kar do taaki same file dobara bhi choose kar sake
+                event.target.value = "";
+            }
+        }
+
+        // ===== Admin/Reception visitor list =====
+        async function loadVisitorsAdmin() {
+            try {
+                const status = filterStatus.value;
+                const search = (searchBox.value || "").trim();
+
+                let url = `${API_URL}/visitors?status=${encodeURIComponent(status)}`;
+                if (search) {
+                    url += `&search=${encodeURIComponent(search)}`;
+                }
+
+                const res = await fetch(url);
+                const data = await res.json();
+
+                adminTableBody.innerHTML = "";
+                data.forEach(v => {
+                    const badgeClass =
+                        v.status === "in" ? "status-in" :
+                            v.status === "out" ? "status-out" : "status-expected";
+
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
                     <td>${v.id}</td>
                     <td>${v.pass_id}</td>
                     <td>${v.name}</td>
@@ -2113,47 +2263,58 @@
                         </button>
                     </td>
                 `;
-                adminTableBody.appendChild(tr);
-            });
+                    adminTableBody.appendChild(tr);
+                });
 
-        } catch (e) {
-            console.error(e);
-            alert("Error loading visitors.");
+            } catch (e) {
+                console.error(e);
+                alert("Error loading visitors.");
+            }
         }
-    }
 
-    async function deleteVisitor(id) {
-        if (!confirm("Delete this visitor record?")) return;
-        try {
-            await fetch(`${API_URL}/visitors/${id}`, {method: "DELETE"});
-            await loadVisitorsAdmin();
+        async function deleteVisitor(id) {
+            if (!confirm("Delete this visitor record?")) return;
+            try {
+                await fetch(`${API_URL}/visitors/${id}`, { method: "DELETE" });
+                await loadVisitorsAdmin();
+                await loadStats();
+                await loadVisitorsTable("in");
+                await loadVisitorsTable("today");
+            } catch (e) {
+                console.error(e);
+                alert("Error deleting visitor.");
+            }
+        }
+
+        if (filterStatus) {
+            filterStatus.addEventListener("change", loadVisitorsAdmin);
+        }
+        if (searchBox) {
+            searchBox.addEventListener("input", () => {
+                loadVisitorsAdmin();
+            });
+        }
+
+        // ===== Initial load after login =====
+        async function initialLoad() {
             await loadStats();
             await loadVisitorsTable("in");
             await loadVisitorsTable("today");
-        } catch (e) {
-            console.error(e);
-            alert("Error deleting visitor.");
+            await loadVisitorsTable("expected");
+            await loadVisitorsAdmin();
         }
-    }
 
-    if (filterStatus) {
-        filterStatus.addEventListener("change", loadVisitorsAdmin);
-    }
-    if (searchBox) {
-        searchBox.addEventListener("input", () => {
-            loadVisitorsAdmin();
+        // Extra safety: turn off autocomplete for all inputs/forms (in case browser ignore some)
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("form").forEach(f => f.setAttribute("autocomplete", "off"));
+            document.querySelectorAll("input").forEach(i => {
+                if (i.type !== "password") {
+                    i.setAttribute("autocomplete", "off");
+                }
+            });
         });
-    }
-
-    // ===== Initial load after login =====
-    async function initialLoad() {
-        await loadStats();
-        await loadVisitorsTable("in");
-        await loadVisitorsTable("today");
-        await loadVisitorsTable("expected");
-        await loadVisitorsAdmin();
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
