@@ -1,0 +1,6 @@
+Flask
+gunicorn
+qrcode
+itsdangerous
+click
+Werkzeug
