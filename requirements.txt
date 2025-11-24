@@ -1,6 +1,5 @@
 Flask
-gunicorn
+flask-cors
 qrcode
-itsdangerous
-click
-Werkzeug
+Pillow
+gunicorn
